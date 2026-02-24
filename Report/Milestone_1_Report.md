@@ -3,7 +3,7 @@
 Group 2  
 Data Science and AI Lab Project  
 
-![Logo](.\Images\IITM.JPG)
+![Logo](Images/IITM.JPG)
 
 ## Milestone 1 Report
 
@@ -102,7 +102,7 @@ The weight estimation stage treats solid foods and liquid foods differently. For
 The nutrition mapping stage takes the food label and estimated grams from the previous stage and queries a custom CSV database built from IFCT 2017 and USDA FoodData Central and custom dataset and other kaggle datasets All values are stored per 100g and scaled using the formula: Scaled Nutrition = (Nutrition per 100g × Estimated Grams) / 100.
 
 ### Food Classification Pipeline  
-![Logo](.\Images\M1fcp.JPG)
+![Logo](Images/M1fcp.JPG)
 
 ### Nutrition Mapping Layer
 
@@ -177,30 +177,26 @@ Evaluation metrics are used at each stage of the pipeline to ensure the reliabil
 
 At this stage, the boundaries of the food items and the plate are defined for accurate nutrition calculation. The  following metrics are used for evaluation at this stage:  
 - Mean average precision - measures overall detection accuracy across all food classes
-$$
-mAP = \frac{1}{C} \sum_{c=1}^{C} AP_c
-$$
+
+    $\mathrm{mAP} = \frac{1}{C} \sum_{c=1}^{C} AP_c$
 
 - Precision - Shows how many detected food items are correct  
-$$
-\text{Precision} = \frac{TP}{TP + FP}
-$$
+     $\mathrm{Precision} = \frac{TP}{TP + FP}$
 
 - Recall - Highlights the ability to correctly detect all food items on the plate  
-$$
-\text{Recall} = \frac{TP}{TP + FN}
-$$
+      $\mathrm{Recall} = \frac{TP}{TP + FN}$
 
-- F1 score - provides a balanced evaluation between precision and recall  
+- F1 score - provides a balanced evaluation between precision and recall
+
+  $\mathrm{F1} = 2 \cdot \frac{\mathrm{Precision} \cdot \mathrm{Recall}}{\mathrm{Precision} + \mathrm{Recall}}$ 
 
 ### Portion size estimation
 
 At this step, portion size is estimated by performing the plate-to-food pixel area ratio method  
 - A custom dataset containing the ground truth weight of food items will be used for evaluation  
 - Mean Absolute Error (MAE) between the predicted weight in grams and the corresponding ground truth measurements will be calculated to evaluate the weight estimation model. 
-$$
-\text{MAE} = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
-$$
+
+  $\mathrm{MAE} = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|$
 
 ### Gap analysis suggestions evaluation
 
