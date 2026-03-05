@@ -208,7 +208,7 @@ The complete Nutri Vision pipeline consists of four sequential stages. Each stag
 
 Moderate class imbalance observed. Chapati and rice are the most represented classes with 1,400+ images each. Minority classes, upma, and pongal have fewer than 500 samples. Class weights will be applied during training to address this imbalance.
 
-![][image2]
+![Img][Report/Images/img.jpg]
 
 *Fig 4.1.1: Image count per class for all 10 food categories — IndianFood10, sorted by count*
 
