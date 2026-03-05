@@ -257,16 +257,6 @@ IndianFoodNet-30 shows a more pronounced class imbalance compared to IndianFood1
 ![][image7]  
 *Fig 4.2.2: Bounding box width vs height distribution across 30 classes — shows shape diversity*
 
-**SAM 2 Segmentation Mask Generation Plan**
-
-* IndianFoodNet-30 has bounding boxes but no segmentation masks — required for YOLOv8-seg.
-
-* SAM 2 will auto-generate masks from existing bounding boxes as prompts via Roboflow's smart polygon tool.
-
-* Estimated effort: 1–2 days for 5,446 images at approximately 15 seconds per image for review and correction.
-
-* Expected mask quality: \~90% accepted without correction, \~10% need minor adjustment.
-
 ## **4.3  South Indian Food Detection EDA**
 
 **Dataset Overview**
