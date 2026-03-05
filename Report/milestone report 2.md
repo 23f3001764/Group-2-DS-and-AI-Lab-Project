@@ -61,7 +61,7 @@ Milestone 2 covers the identification, download, and exploratory data analysis (
 
 The complete Nutri Vision pipeline consists of four sequential stages. Each stage feeds into the next, transforming a raw plate photograph into a personalised nutrition report.
 
-![][image1]
+![Report Img][Images/Report/report_img.jpg]
 
  *Fig 2.1: Overview of sub-tasks involved in the system*
 
