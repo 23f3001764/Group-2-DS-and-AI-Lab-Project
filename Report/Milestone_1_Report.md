@@ -90,6 +90,18 @@ Finally, NutriVision integrates a conversational AI suggestion layer powered by 
 
 Overall, the key contribution of NutriVision lies in combining object detection, portion estimation, structured nutrition mapping, and AI-driven conversational guidance into one coherent, culturally adapted system. This holistic integration differentiates it from existing solutions that typically address these components independently.
 
+| Features | Traditional Calorie Apps (e.g., MyFitnessPal) | Basic Food Image Classifiers | Nutrition Estimation Apps (Fixed Portions) | NutriVision (Proposed) |
+|----------|-----------------------------------------------|------------------------------|---------------------------------------------|------------------------|
+| Manual Food Entry Required | ✓ | ✗ | ✗ | ✗ |
+| Multi-Food Detection in One Image | ✗ | ✗ | Limited | ✓ |
+| Plate Boundary Detection | ✗ | ✗ | ✗ | ✓ |
+| Portion Size Estimation from Image | ✗ | ✗ | ✗ (Assumes 100g) | ✓ |
+| Indian Mixed Meal Support | Limited | Limited | Limited | ✓ |
+| Custom Indian Nutrition Database | ✗ | ✗ | Limited | ✓ |
+| Personalized Nutrient Gap Analysis | Limited | ✗ | ✗ | ✓ |
+| Conversational AI Dietary Suggestions | ✗ | ✗ | ✗ | ✓ |
+| End-to-End Integrated Pipeline | ✗ | ✗ | ✗ | ✓ |
+
 ---
 ## Model Architecture
 
