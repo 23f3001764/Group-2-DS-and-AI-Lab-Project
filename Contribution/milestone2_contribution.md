@@ -35,7 +35,7 @@ NutriVision -- AI Powered Indian Food Nutrition Estimation System
 
 ### 3. Nutrition Dataset Exploratory Data Analysis (EDA)
 
-**Created by: Aman Mani Tiwari**
+**Created by: Aman Mani Tiwari and Tasneem Shahnawaz**
 
 -   Analysed the Indian Food Nutrition dataset.
 -   Studied calorie distribution across food items.
