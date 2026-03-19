@@ -164,7 +164,7 @@ To better understand the spatial characteristics of objects in the dataset, an a
 
 The dominance of large bounding boxes indicates that food items occupy a significant portion of the image, making object detection effective but necessitating segmentation for precise portion estimation. Considered filtering 737 tiny bounding boxes as well.
 
-**3.1.4 image quality analysis**
+**3.1.4 Image quality analysis**
 
 The dataset was analyzed to understand the distribution of image resolutions and ensure compatibility with the model input requirements.
 
