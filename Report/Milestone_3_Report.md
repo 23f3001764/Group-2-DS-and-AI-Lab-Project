@@ -91,7 +91,7 @@ Each image has a corresponding label file in YOLO format, ensuring a one-to-one 
 
 The dataset follows the YOLO directory format:
 
-![][image1]
+![M3_1][images/M3_1.png]
 
 # **3\. Dataset Preprocessing**
 
