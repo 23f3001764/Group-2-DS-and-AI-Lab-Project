@@ -677,10 +677,10 @@ The following metrics are used to evaluate segmentation performance:
 
 * **IoU (Intersection over Union)**  
    Measures the overlap between the predicted segmentation mask and the ground-truth mask.  
-  ![M3_17](Images/M3_17.png) 
+  ![M3_17](Images/M3_17.jpg) 
 * **Dice Coefficient**  
    Measures the similarity between the predicted mask and the ground-truth mask.  
-  ![M3_18](Images/M3_18.png)
+  ![M3_18](Images/M3_18.jpg)
 
 These metrics are important because better segmentation directly improves the accuracy of pixel-area extraction, which is later used for weight estimation.
 
@@ -711,11 +711,11 @@ Since weight estimation is a regression problem, the following metrics are used 
 * **MAE (Mean Absolute Error)**  
    Measures the average absolute difference between the predicted weight and the actual weight.
 
-![M3_19](Images/M3_19.png)
+![M3_19](Images/M3_19.jpg)
 
 * **RMSE (Root Mean Squared Error)**  
    Measures the square root of the average squared difference between the predicted weight and the actual weight.  
-  ![M3_20](Images/M3_20.png)
+  ![M3_20](Images/M3_20.jpg)
 
 These metrics are appropriate because:
 
