@@ -114,7 +114,7 @@ A filtering approach was applied to select images containing a specific class (*
 
 After creating a unified set of class labels, it is necessary to align the class indices from each dataset to the new unified class space. Each dataset originally uses its own class indexing (e.g., class 0 in DS1 may represent a different food item than class 0 in DS2). Therefore, a remapping strategy was implemented where, after normalization and sorting were done, new indices were assigned.
 
-![][image2]
+![M3_2](Images/M3_2.png)
 
 Later, a validation step was performed to ensure that all annotation files contain valid class IDs that correctly map to the unified class space. To create a unified training dataset, the three source datasets (DS1, DS2, DS3) were then merged into a single dataset after applying label normalization and class ID remapping.
 
@@ -129,7 +129,7 @@ To ensure the correctness and quality of the dataset, a subset of images from th
   * Plate types and orientation  
   * Background complexity
 
-![][image3]
+![M3_3](Images/M3_3.png)
 
 The dataset was analyzed to understand the distribution of annotations across all 120 food classes. The analysis includes:
 
@@ -148,7 +148,7 @@ Some classes have very few samples, for example:
 * *chicken\_tikka*: 35 annotations   
 * *churma*: 44 annotations 
 
-![][image4]
+![M3_4](Images/M3_4.png)
 
 This shows the high class imbalance the dataset contains. The dataset contains classes with widely varying numbers of annotations. Extremely low-sample classes can lead to poor model learning. Therefore, a threshold-based filtering approach was adopted to improve model performance. A threshold criterion of \<50 annotations was implemented, and classes like chicken\_tikka and churma were removed. Moderate sample classes (50-15- annotations) were retained but subjected to monitoring. Classes with greater than 150 annotations were immediately kept for training. Now the dataset is left with 118 classes.
 
@@ -156,7 +156,7 @@ This shows the high class imbalance the dataset contains. The dataset contains c
 
 To better understand the spatial characteristics of objects in the dataset, an analysis of bounding box dimensions and distribution was performed. The following properties were analyzed: Bounding box width, Bounding box height, Bounding box area, Number of annotations per image.
 
-![][image5]
+![M3_5](Images/M3_5.png)
 
 * Tiny boxes (\< 1% area): 737 (1.3%)  
 * Large boxes (\> 50% area): 24,016 (42.3%)  
@@ -168,7 +168,7 @@ The dominance of large bounding boxes indicates that food items occupy a signifi
 
 The dataset was analyzed to understand the distribution of image resolutions and ensure compatibility with the model input requirements.
 
-![][image6]
+![M3_6](Images/M3_6.png)
 
 The dataset’s dominant resolution is 640 × 640 → 35,331 images (\~90%), which is the standard YOLO input size. The rest are 416 × 416 → 3,854 images (\~10%) are also valid.The dataset contains very limited variation in resolution, and the majority were already aligned with YOLO requirements
 
@@ -206,7 +206,7 @@ After removing selected classes, class indices were remapped to ensure a continu
 
 Images with a resolution of 416×416 were resized to 640×640 to align with the input size commonly used in YOLO-based models.
 
-![][image7]
+![M3_7](Images/M3_7.png)
 
 * Single class image → 37579 images  
 * Multi-class image → 1207 images  
@@ -216,15 +216,16 @@ Images with a resolution of 416×416 were resized to 640×640 to align with the 
 
 To address class imbalance, a maximum cap of 500 images per class was applied to the training set. Excess samples from overrepresented classes were removed. Priority was given to removing single-class images to minimize information loss. For multi-class images, removal was avoided if it negatively impacted underrepresented classes. Total images deleted from training: 7589\.
 
-![][image8]
+![M3_8](Images/M3_8.png)
 
 To further address class imbalance, underrepresented classes were augmented using Albumentations. Transformations such as horizontal flipping, brightness/contrast adjustment, color variation, rotation, and noise injection were applied. Bounding box-aware augmentation was employed to ensure spatial consistency between images and annotations. This process increased the number of training samples for minority classes, improving model robustness and reducing bias.
 
-![][image9]
+![M3_9](Images/M3_9.png)
 
 **Final check:**
 
-![][image10]![][image11]
+![M3_10](Images/M3_10.png)
+![M3_11](Images/M3_11.png)
 
 # **4\. Model Architecture**
 
@@ -233,7 +234,7 @@ To further address class imbalance, underrepresented classes were augmented usin
 The Nutri Vision system follows a multi-stage pipeline to generate nutritional insights from food images. A raw input image (640×640) is first processed using a YOLOv12s model for object detection, producing class labels and bounding boxes. Pixel area is then calculated for each detected item and used by an MLP regressor to estimate weight in grams. Finally, these weights are mapped to a nutrition database to obtain values such as calories, protein, carbohydrates, and fats, with a future extension incorporating a RAG-based system for enhanced recommendations.
 
 The pipeline can be summarized as:  
- **![][image12]**
+ ![M3_12](Images/M3_12.png)
 
 ## **4.2 Object Detection Model (YOLO)**
 
@@ -540,11 +541,11 @@ Overall, the example predictions confirm that the current model is capable of ge
 
 ***Figure 8.1:** Sample test detections produced by the Demo Model (v3 \- 15 epochs, 416 px).*
 
-![][image13]
+![M3_13](Images/M3_13.png)
 
 ***Figure 8.2:** Sample test detections produced by the Main Model (v1 \- 7 epochs, 640 px).*
 
-![][image14]
+![M3_14](Images/M3_14.png)
 
 ## **8.2 Visualization of Outputs**
 
@@ -594,7 +595,7 @@ Thus, the visual analysis complements the quantitative metrics and provides a cl
 
 ***Figure 8.3:** Top 20 class-wise AP50 comparison for the Demo Model and Main Model.*
 
-![][image15]
+![M3_15](Images/M3_15.png)
 
 # **9\. Loss Functions and Evaluation Metrics**
 
@@ -666,7 +667,7 @@ Based on the current results, the **Demo Model is the better-performing detectio
 
 ***Figure 9.1:*** *Comparison of validation and test set detection metrics for the Demo Model and Main Model.*
 
-![][image16]
+![M3_16](Images/M3_16.png)
 
 ## **9.2 Segmentation Metrics (IoU, Dice)**
 
@@ -676,10 +677,10 @@ The following metrics are used to evaluate segmentation performance:
 
 * **IoU (Intersection over Union)**  
    Measures the overlap between the predicted segmentation mask and the ground-truth mask.  
-      		![][image17]​  
+  ![M3_17](Images/M3_17.png) 
 * **Dice Coefficient**  
    Measures the similarity between the predicted mask and the ground-truth mask.  
-  		![][image18]
+  ![M3_18](Images/M3_18.png)
 
 These metrics are important because better segmentation directly improves the accuracy of pixel-area extraction, which is later used for weight estimation.
 
@@ -710,11 +711,11 @@ Since weight estimation is a regression problem, the following metrics are used 
 * **MAE (Mean Absolute Error)**  
    Measures the average absolute difference between the predicted weight and the actual weight.
 
-  ![][image19]
+![M3_19](Images/M3_19.png)
 
 * **RMSE (Root Mean Squared Error)**  
    Measures the square root of the average squared difference between the predicted weight and the actual weight.  
-  			![][image20]
+  ![M3_20](Images/M3_20.png)
 
 These metrics are appropriate because:
 
