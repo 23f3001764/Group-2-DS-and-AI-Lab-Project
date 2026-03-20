@@ -17,7 +17,7 @@ NutriVision -- AI Powered Indian Food Nutrition Estimation System
 
 ------------------------------------------------------------
 
-### 2. Model Training (YOLOv12 + Segmentation + ML Model)
+### 2. Model Training (YOLOv12)
 **Created by: Sahil Raj**
 
 - Trained a demo YOLOv12 model for food detection.
