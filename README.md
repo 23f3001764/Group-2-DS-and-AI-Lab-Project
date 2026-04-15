@@ -26,7 +26,7 @@ Both URLs serve the identical Gradio application running on Lightning AI with GP
 
 ## Gradio Interface
 
-
+![Report](../Report/Images/ds1.jpg)
 
 ## Pipeline
 
