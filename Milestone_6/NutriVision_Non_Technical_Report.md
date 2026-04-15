@@ -22,7 +22,7 @@ How does it work?
 
 You upload or take a photo of your food. The AI identifies the food items in the image and estimates the portion size using a ₹10 coin as a reference. It then calculates the approximate nutritional values such as calories and nutrients.
 
-![Report](Images/ds1.jpg)
+![Report](Images/report_img.jpg)
 
 **Application Link:**  
 [**https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai**](https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai)
