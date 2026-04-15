@@ -2,17 +2,13 @@
 
             
 
-**NutriVision** 
+*NutriVision* 
 
-AI-Powered Indian Food Nutrition Estimator 
 
 ──────────────────────────────── 
 
 User Guide \- (Non-Technical Report)
 
-Data Science & AI Lab Project
-
-Group \- 2
 
 **1\. App Overview (Purpose & Use Cases)**
 
