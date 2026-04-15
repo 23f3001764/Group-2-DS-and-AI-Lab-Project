@@ -76,7 +76,7 @@ Food example:
 
 * Image of Samosa
 
-**![Img](ds2/img.jpg)**
+**![Img](Images/ds2.jpg)**
 
 **6\. 📊 Example Outputs**
 
