@@ -1,0 +1,417 @@
+{
+  "_metadata": {
+    "description": "Apparent bulk density (g/cm3) for all 80 food classes, as-served",
+    "usage": "weight_g = volume_cm3 x density_g_per_cm3",
+    "note": "Values represent the cooked/served food item including absorbed oil, syrup, or moisture — NOT dry ingredient density",
+    "version": "1.0",
+    "sources": [
+      "PMC/Springer: cooked idli bulk density 0.53 g/cm3",
+      "FAO/INFOODS Density Database v2.0 (cooked cereals, legumes)",
+      "USDA food texture/density literature (eggs, meat, milk)",
+      "Food engineering first-principles from ingredient composition",
+      "Indian food science publications (ResearchGate, PubMed)"
+    ]
+  },
+  "density": {
+    "aloo gobi": {
+      "density_g_per_cm3": 0.8,
+      "basis": "inference",
+      "source": "Dry stir-fry: cooked potato (~0.90) + cauliflower (~0.65); composite ~0.80"
+    },
+    "aloo methi": {
+      "density_g_per_cm3": 0.78,
+      "basis": "inference",
+      "source": "Potato + fenugreek leaves dry sabzi; leaves wilt and add little mass"
+    },
+    "aloo mutter": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Potato + peas in thin gravy; wetter than dry sabzi"
+    },
+    "aloo paratha": {
+      "density_g_per_cm3": 0.82,
+      "basis": "inference",
+      "source": "Stuffed flatbread: dough + potato filling + ghee; denser than plain chapati"
+    },
+    "amritsari kulcha": {
+      "density_g_per_cm3": 0.78,
+      "basis": "inference",
+      "source": "Leavened stuffed tandoor bread; baking-soda leavening reduces density vs paratha"
+    },
+    "anda curry": {
+      "density_g_per_cm3": 1.0,
+      "basis": "published",
+      "source": "Hard-boiled egg density ~1.02 (USDA); egg in curry composite ~1.00"
+    },
+    "banana chips": {
+      "density_g_per_cm3": 0.42,
+      "basis": "inference",
+      "source": "Dehydrated deep-fried banana slices; moisture removed → crispy ~0.35-0.50"
+    },
+    "besan laddu": {
+      "density_g_per_cm3": 1.08,
+      "basis": "inference",
+      "source": "Roasted chickpea flour + ghee + sugar; compact sphere — ghee fills pores"
+    },
+    "bhindi masala": {
+      "density_g_per_cm3": 0.75,
+      "basis": "inference",
+      "source": "Cooked okra hollow structure; bulk density ~0.65-0.80"
+    },
+    "biryani": {
+      "density_g_per_cm3": 0.88,
+      "basis": "FAO-inference",
+      "source": "FAO cooked rice ~1.0; biryani loosely layered with meat/veg → ~0.88"
+    },
+    "balushahi": {
+      "density_g_per_cm3": 0.85,
+      "basis": "inference",
+      "source": "Flaky layered fried maida donut + sugar glaze; lighter than gulab jamun"
+    },
+    "boondi laddu": {
+      "density_g_per_cm3": 1.02,
+      "basis": "inference",
+      "source": "Fried boondi balls + sugar syrup; loosely packed with some air gaps"
+    },
+    "chaas": {
+      "density_g_per_cm3": 1.02,
+      "basis": "published",
+      "source": "Buttermilk density 1.02-1.04 g/cm3 (USDA)"
+    },
+    "chana masala": {
+      "density_g_per_cm3": 0.95,
+      "basis": "FAO-inference",
+      "source": "Cooked chickpeas ~1.0-1.1 in thick gravy; composite ~0.95"
+    },
+    "chapati": {
+      "density_g_per_cm3": 0.68,
+      "basis": "inference",
+      "source": "Whole-wheat unleavened disc; steam-puffed slightly; 0.65-0.70 range"
+    },
+    "chicken pizza": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Pizza base + chicken topping (~1.0); heavier than margherita"
+    },
+    "chicken wings": {
+      "density_g_per_cm3": 0.92,
+      "basis": "published",
+      "source": "Bone-in chicken: meat ~1.05, bone ~1.9; whole-wing composite ~0.92"
+    },
+    "chikki": {
+      "density_g_per_cm3": 1.22,
+      "basis": "inference",
+      "source": "Peanut+jaggery brittle; compressed no-air candy; jaggery ~1.4, peanuts ~0.8"
+    },
+    "chivda": {
+      "density_g_per_cm3": 0.28,
+      "basis": "inference",
+      "source": "Roasted/fried puffed-rice mix + nuts; very high air content"
+    },
+    "chole bhature": {
+      "density_g_per_cm3": 0.8,
+      "basis": "inference",
+      "source": "Puffed fried bhature (~0.45) + chickpea curry (~1.0); plated composite ~0.80"
+    },
+    "dabeli": {
+      "density_g_per_cm3": 0.75,
+      "basis": "inference",
+      "source": "Spiced potato filling in pav bun; chutneys and pomegranate seeds add density"
+    },
+    "dal khichdi": {
+      "density_g_per_cm3": 0.82,
+      "basis": "FAO-inference",
+      "source": "Rice+lentil soft porridge; softer and wetter than biryani"
+    },
+    "dhokla": {
+      "density_g_per_cm3": 0.6,
+      "basis": "inference",
+      "source": "Besan steamed cake; slightly denser than idli (chickpea flour > rice)"
+    },
+    "falooda": {
+      "density_g_per_cm3": 1.05,
+      "basis": "inference",
+      "source": "Milk base + basil seeds (hydrated) + rose syrup; denser than plain milk"
+    },
+    "fish curry": {
+      "density_g_per_cm3": 0.95,
+      "basis": "inference",
+      "source": "Fish muscle density ~1.0 in thin/medium gravy; composite ~0.95"
+    },
+    "gajar ka halwa": {
+      "density_g_per_cm3": 0.98,
+      "basis": "inference",
+      "source": "Grated carrot cooked down with milk + sugar + ghee; close to water density"
+    },
+    "garlic bread": {
+      "density_g_per_cm3": 0.55,
+      "basis": "inference",
+      "source": "Western yeast bread crumb (~0.35-0.45) + garlic butter; composite ~0.55"
+    },
+    "garlic naan": {
+      "density_g_per_cm3": 0.72,
+      "basis": "inference",
+      "source": "Yeast-leavened tandoor bread + butter; softer and less dense than paratha"
+    },
+    "ghevar": {
+      "density_g_per_cm3": 0.72,
+      "basis": "inference",
+      "source": "Fried disc with honeycomb air pockets + thin syrup; porous structure"
+    },
+    "grilled sandwich": {
+      "density_g_per_cm3": 0.72,
+      "basis": "inference",
+      "source": "Grilled compressed bread + vegetable/cheese filling; denser than untoasted bread"
+    },
+    "gujhia": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Fried maida pastry shell + khoya/dry-fruit filling; crescent shape"
+    },
+    "gulab jamun": {
+      "density_g_per_cm3": 1.12,
+      "basis": "inference",
+      "source": "Fried khoya ball + ~30% sugar syrup absorption (NCERT vol. calc); >water density"
+    },
+    "hara bhara kabab": {
+      "density_g_per_cm3": 0.8,
+      "basis": "inference",
+      "source": "Shallow-fried spinach+peas+potato patty; dense mashed vegetable"
+    },
+    "idiyappam": {
+      "density_g_per_cm3": 0.48,
+      "basis": "inference",
+      "source": "Steamed rice-flour string noodles; very porous extruded structure"
+    },
+    "idli": {
+      "density_g_per_cm3": 0.53,
+      "basis": "published",
+      "source": "PMC/Springer study — cooked idli bulk density 0.53 g/cm3"
+    },
+    "jalebi": {
+      "density_g_per_cm3": 1.25,
+      "basis": "inference",
+      "source": "Fried wheat batter coil + heavy sugar-syrup saturation; syrup density ~1.3-1.4"
+    },
+    "kaju katli": {
+      "density_g_per_cm3": 1.38,
+      "basis": "inference",
+      "source": "Cashew paste + sugar; compressed flat diamond near-zero air; cashew ~0.8, sugar ~1.6"
+    },
+    "khakhra": {
+      "density_g_per_cm3": 0.32,
+      "basis": "inference",
+      "source": "Dry-roasted flatbread; all moisture removed → cracker-like"
+    },
+    "kheer": {
+      "density_g_per_cm3": 1.05,
+      "basis": "inference",
+      "source": "Whole milk (~1.03) + rice + sugar; slightly denser than plain milk"
+    },
+    "kulfi": {
+      "density_g_per_cm3": 0.95,
+      "basis": "inference",
+      "source": "Dense frozen milk dessert; less airy than western ice cream ~0.90-1.0"
+    },
+    "margherita pizza": {
+      "density_g_per_cm3": 0.82,
+      "basis": "inference",
+      "source": "Pizza crust (~0.55) + tomato sauce + mozzarella; composite slice ~0.80-0.85"
+    },
+    "masala dosa": {
+      "density_g_per_cm3": 0.58,
+      "basis": "inference",
+      "source": "Crisp crepe (~0.45) + aloo masala filling (~0.85); area-weighted composite"
+    },
+    "masala papad": {
+      "density_g_per_cm3": 0.32,
+      "basis": "inference",
+      "source": "Roasted/fried lentil wafer + raw toppings; base wafer very light ~0.25-0.35"
+    },
+    "medu vada": {
+      "density_g_per_cm3": 0.68,
+      "basis": "inference",
+      "source": "Deep-fried fermented urad dal donut; porous from CO2 + oil-soaked"
+    },
+    "misal pav": {
+      "density_g_per_cm3": 0.85,
+      "basis": "inference",
+      "source": "Dense sprouted moth bean curry + farsan toppings on pav"
+    },
+    "modak": {
+      "density_g_per_cm3": 0.9,
+      "basis": "inference",
+      "source": "Thin steamed rice outer shell + coconut-jaggery filling; moderate composite"
+    },
+    "moong dal halwa": {
+      "density_g_per_cm3": 1.05,
+      "basis": "inference",
+      "source": "Cooked moong dal + ghee + sugar; high fat+sugar content → dense semi-solid"
+    },
+    "murukku": {
+      "density_g_per_cm3": 0.45,
+      "basis": "inference",
+      "source": "Deep-fried rice+urad spiral; extruded porous structure ~0.40-0.50"
+    },
+    "mysore pak": {
+      "density_g_per_cm3": 1.08,
+      "basis": "inference",
+      "source": "Besan + ghee + sugar; porous but ghee fills pores; net density ~1.05-1.10"
+    },
+    "navratan korma": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Mixed veg + paneer + cream; cream-based sauce moderates density"
+    },
+    "neer dosa": {
+      "density_g_per_cm3": 0.48,
+      "basis": "inference",
+      "source": "Ultra-thin rice-water crepe; very high surface-to-mass ratio, extremely light"
+    },
+    "onion pakoda": {
+      "density_g_per_cm3": 0.68,
+      "basis": "inference",
+      "source": "Irregular deep-fried besan batter + onion; oil-absorbed porous structure"
+    },
+    "palak paneer": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Spinach puree (~0.85) + paneer (~0.95); creamy curry composite"
+    },
+    "paneer masala": {
+      "density_g_per_cm3": 0.92,
+      "basis": "inference",
+      "source": "Paneer (cottage cheese) ~0.95 in tomato-onion gravy"
+    },
+    "paneer pizza": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Pizza base + paneer (~0.95); similar density to chicken pizza"
+    },
+    "pani puri": {
+      "density_g_per_cm3": 0.68,
+      "basis": "inference",
+      "source": "Hollow fried semolina shell (~0.40) + spiced water filling → composite ~0.68"
+    },
+    "paniyaram": {
+      "density_g_per_cm3": 0.65,
+      "basis": "inference",
+      "source": "Ball-shaped griddle-cooked idli batter; crust all around traps moisture"
+    },
+    "papdi chaat": {
+      "density_g_per_cm3": 0.72,
+      "basis": "inference",
+      "source": "Fried wheat crackers + yogurt (~1.05) + chutneys; composite ~0.72"
+    },
+    "patrode": {
+      "density_g_per_cm3": 0.72,
+      "basis": "inference",
+      "source": "Steamed colocasia-leaf + rice-batter rolls; dense compressed layers"
+    },
+    "pav bhaji": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Heavily mashed buttered mixed vegetables; dense homogeneous paste"
+    },
+    "pepperoni pizza": {
+      "density_g_per_cm3": 0.9,
+      "basis": "inference",
+      "source": "Base + cured pepperoni (~1.0-1.05) + cheese; densest pizza variant"
+    },
+    "phirni": {
+      "density_g_per_cm3": 1.06,
+      "basis": "inference",
+      "source": "Ground rice pudding; thicker than kheer; semi-solid"
+    },
+    "poha": {
+      "density_g_per_cm3": 0.38,
+      "basis": "inference",
+      "source": "Flattened rice flakes; puffed/flat structure → one of the lightest cooked foods"
+    },
+    "pongal": {
+      "density_g_per_cm3": 0.85,
+      "basis": "inference",
+      "source": "Rice + moong dal soft porridge with ghee; moderately dense"
+    },
+    "puri bhaji": {
+      "density_g_per_cm3": 0.75,
+      "basis": "inference",
+      "source": "Deep-fried puffed puri (~0.40) + potato bhaji (~0.90); composite ~0.75"
+    },
+    "rajma chawal": {
+      "density_g_per_cm3": 0.92,
+      "basis": "FAO-inference",
+      "source": "Cooked kidney beans (~1.1) + rice (~1.0); plated composite ~0.92"
+    },
+    "rasgulla": {
+      "density_g_per_cm3": 1.05,
+      "basis": "inference",
+      "source": "Spongy chhena ball absorbs light sugar syrup; density slightly >1.0"
+    },
+    "rava dosa": {
+      "density_g_per_cm3": 0.52,
+      "basis": "inference",
+      "source": "Semolina thin lacy crispy crepe; light structure"
+    },
+    "sabudana khichdi": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Cooked tapioca pearls (~1.1 when soaked) + peanuts + potato; composite ~0.88"
+    },
+    "sabudana vada": {
+      "density_g_per_cm3": 0.82,
+      "basis": "inference",
+      "source": "Deep-fried tapioca+peanut patty; tapioca is dense, oil-absorbed"
+    },
+    "samosa": {
+      "density_g_per_cm3": 0.75,
+      "basis": "inference",
+      "source": "Fried maida shell + potato filling; oil-soaked; pyramid shape"
+    },
+    "seekh kebab": {
+      "density_g_per_cm3": 0.9,
+      "basis": "published",
+      "source": "Cooked ground meat bulk density ~0.90-1.0 g/cm3 (USDA)"
+    },
+    "set dosa": {
+      "density_g_per_cm3": 0.58,
+      "basis": "inference",
+      "source": "Thick spongy fermented dosa; similar to idli but griddle-set reduces porosity"
+    },
+    "sev puri": {
+      "density_g_per_cm3": 0.65,
+      "basis": "inference",
+      "source": "Thin papdi base + crispy sev (light) + chutneys"
+    },
+    "solkadhi": {
+      "density_g_per_cm3": 1.02,
+      "basis": "published",
+      "source": "Coconut milk + kokum; diluted coconut milk ~1.03 g/cm3"
+    },
+    "steamed momo": {
+      "density_g_per_cm3": 0.78,
+      "basis": "inference",
+      "source": "Wheat dough wrapper + vegetable/meat filling; denser than fermented items"
+    },
+    "thali": {
+      "density_g_per_cm3": 0.85,
+      "basis": "inference",
+      "source": "Complete mixed meal average; use individual detection when possible"
+    },
+    "thukpa": {
+      "density_g_per_cm3": 0.88,
+      "basis": "inference",
+      "source": "Tibetan noodle soup; noodles + broth + vegetables"
+    },
+    "uttapam": {
+      "density_g_per_cm3": 0.72,
+      "basis": "inference",
+      "source": "Thicker than dosa; griddle-cooked with vegetable toppings"
+    },
+    "vada pav": {
+      "density_g_per_cm3": 0.78,
+      "basis": "inference",
+      "source": "Fried potato vada (~0.82) in pav bun (~0.55); composite ~0.78"
+    }
+  }
+}
