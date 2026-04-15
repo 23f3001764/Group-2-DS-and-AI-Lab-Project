@@ -2,13 +2,9 @@
 
             
 
-*NutriVision* 
+# Nutrivision
 
-
-──────────────────────────────── 
-
-User Guide \- (Non-Technical Report)
-
+## **User Guide \- (Non-Technical Report)**
 
 **1\. App Overview (Purpose & Use Cases)**
 
