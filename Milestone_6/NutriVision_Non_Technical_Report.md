@@ -6,7 +6,7 @@
 
 ## **User Guide \- (Non-Technical Report)**
 
-**1\. App Overview (Purpose & Use Cases)**
+### 1. App Overview (Purpose & Use Cases)
 
 NutriVision is an easy-to-use AI-based application, implemented using a Gradio web interface, that allows users to analyze food items effortlessly. Gradio is a Python library used to create simple and interactive web interfaces for machine learning models. It allows users to input data (such as images or text) and view model predictions directly through a web-based application without requiring frontend development. By uploading a food image, the system identifies the item and estimates its nutritional content, including calories, protein, and fats.
 
@@ -19,20 +19,20 @@ You upload or take a photo of your food. The AI identifies the food items in the
 **Application Link:**  
 [**https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai**](https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai)
 
-### **🎯 Purpose**
+**🎯 Purpose**
 
 * To make food analysis simple and accessible  
 * To help users make healthier dietary choices  
 * To demonstrate how AI can be used in everyday life
 
-### **🌍 Use Cases**
+**🌍 Use Cases**
 
 * Students learning about nutrition  
 * Individuals tracking their diet  
 * Fitness enthusiasts monitoring calorie intake  
 * General users curious about food composition
 
-**2\. 📥 Input Description (What the User Provides)**
+### 📥 2. Input Description (What the User Provides)
 
 Users interact with NutriVision by providing:
 
@@ -44,7 +44,7 @@ The image should:
 * Be well-lit and not blurry  
 * Preferably contain a single food item for better accuracy (can contain multiple foods)
 
-**3\. 📤 Output Description (What the User Gets)**
+### 📤 3. Output Description (What the User Gets)
 
 After processing the image, the system provides:
 
@@ -54,14 +54,14 @@ After processing the image, the system provides:
 
 The results are displayed directly in the app interface.
 
-**4\. 🖱️ How to Use the App**
+### 4. 🖱️ How to Use the App
 
 1. Upload a food image with coin or use camera  
 2. Click the Analyse button to analyse the food image  
 3. Wait for the model to process the image  
 4. View the predicted result and nutrition details
 
-**5\. 📌 Example Inputs**
+### 5. 📌 Example Inputs
 
 There are about 79 recognised dishes in the supported foods section in the app. The model can identify and estimate nutrition for any of the dishes present in this section. Items not in this list will be skipped during classification.   
 Food example:
@@ -70,7 +70,7 @@ Food example:
 
 **![Report](../Report/Images/ds2.jpg)**
 
-**6\. 📊 Example Outputs**
+### 6. 📊 Example Outputs
 
 **6.1 Food \- Samosa**
 
@@ -93,15 +93,15 @@ Food example:
 | **Vitamin C (mg)** | 11.7 |
 | **Folate (mcg)** | 13.2 |
 
-**7\. Troubleshooting**
+### 7. 🛠️ Troubleshooting
 
-### **If the image is not detected properly:**
+**If the image is not detected properly:**
 
 * Try using a clearer image  
 * Avoid multiple food items in one image  
 * Make sure the coin is visible in the image
 
-**8\. 📊 Key Results and Real-World Impact**
+### 8. 📊 Key Results and Real-World Impact
 
 Our AI model achieves an impressive 98% accuracy when tested on over 13,000 food images, and is capable of recognizing about 80 Indian dishes such as biryani, dosa, samosa, and paneer masala. The system is designed to support health-conscious individuals, fitness enthusiasts, and people with dietary restrictions by simplifying food tracking and eliminating the need for manual calorie counting. By converting food images into clear nutritional insights, NutriVision demonstrates the practical potential of AI in promoting healthier lifestyle choices. While the system provides useful estimates, the results are approximate and can be further improved with enhanced data and model refinement.
 
