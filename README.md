@@ -24,14 +24,6 @@ Both URLs serve the identical Gradio application running on Lightning AI with GP
 4. Estimates real-world portion weight using PCA geometry + food-specific density
 5. Returns a full macro/micronutrient breakdown and personalised dietary suggestions
 
-## Gradio Interface
-
-![Report](Report/Images/ds1.jpg)
-
-### Gradio Output Interface
-
-![Report](Report/Images/ds4.jpg)
-
 ## Pipeline
 
 ```
@@ -116,6 +108,14 @@ For the deployed Gradio interface:
 - Click **Analyse**
 - Watch the 5-step progress checklist stream live
 - View the annotated image, nutrition table, and LLM weight reasoning
+
+## Gradio Interface
+
+![Report](Report/Images/ds1.jpg)
+
+### Gradio Output Interface
+
+![Report](Report/Images/ds4.jpg)
 
 ---
 
