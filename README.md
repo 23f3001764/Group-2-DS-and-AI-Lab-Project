@@ -173,6 +173,7 @@ Or use the Lightning AI generated public URL.
 
 ```
 .
+.
 ├── .gitignore                         # Git ignore rules
 
 ├── 📂 Archive/                        # Deprecated / older experiments
@@ -210,6 +211,7 @@ Or use the Lightning AI generated public URL.
 │   ├── 📂 Milestone_6/                # Final deliverables
 │   │   ├── User Guide.pdf
 │   │   ├── Technical Report.pdf
+│   │   ├── NutriVision_Non_Technical_Report.md
 │   │   └── Developer Guide.md
 │   │
 │   └── 📂 Contribution/              # Team contributions
@@ -245,7 +247,7 @@ Or use the Lightning AI generated public URL.
 │   └── data.md
 
 ├── 📄 NutriVision – AI Food Analyzer (Problem Statement).pdf
-└── 📘 README.md                     # Main project documentation
+└── 📘 README.md                     # Main project documentation                     
 ```
 
 ### Key Source Files
