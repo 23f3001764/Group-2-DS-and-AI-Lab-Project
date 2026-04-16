@@ -37,7 +37,7 @@ Input Image
   → Output                     (annotated image + nutrition table + LLM reasoning)
 ```
 
-The pipeline is a **streaming generator** — Gradio streams progress after each of 5 stages, so you see live step-by-step feedback rather than waiting for the full result.
+The pipeline is a streaming generator — Gradio streams progress after each of 5 stages, so you see live step-by-step feedback rather than waiting for the full result.
 
 ---
 
@@ -45,7 +45,7 @@ The pipeline is a **streaming generator** — Gradio streams progress after each
 
 ### Prerequisites
 
-- Google Colab (GPU recommended) **or** a local machine with CUDA
+- Google Colab (GPU recommended) or a local machine with CUDA
 - Hugging Face account with [SAM3 access](https://huggingface.co/facebook/sam3) approved
 - OpenRouter API key (for LLM weight reasoning)
 
@@ -104,8 +104,8 @@ Execute cells in order:
 
 For the deployed Gradio interface:
 
-- Upload a photo of your meal with a **₹10 coin lying flat** in frame
-- Click **Analyse**
+- Upload a photo of your meal with a ₹10 coin lying flat in frame
+- Click Analyse
 - Watch the 5-step progress checklist stream live
 - View the annotated image, nutrition table, and LLM weight reasoning
 
@@ -257,12 +257,12 @@ pip install -r requirements.txt
 
 For best results:
 
-- Place a **₹10 coin flat and clearly visible** in frame — the pipeline halts at Step 2 if no coin is detected
+- Place a ₹10 coin flat and clearly visible in frame — the pipeline halts at Step 2 if no coin is detected
 - Ensure food items are not heavily occluded
 - Use good, even lighting
 - Avoid extreme angles (overhead or top-down works best)
 
-> ⚠️ The coin is **required** for scale calibration. Without it, the pipeline cannot estimate real-world dimensions.
+> ⚠️ The coin is required for scale calibration. Without it, the pipeline cannot estimate real-world dimensions.
 
 ---
 
