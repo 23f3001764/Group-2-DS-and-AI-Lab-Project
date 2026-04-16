@@ -19,11 +19,11 @@ NutriVision -- AI Powered Indian Food Nutrition Estimation System
 
 ### Aman Mani Tiwari
 - Contributed to EDA, reports, and documentation.
-- Created Non-Technical Report.
-
+- Created User Guide
+  
 ### Tasneem Shahnawaz
-- Worked on nutrition mapping, conversational layer, and reports.
-- Created User Guide.
+- Worked on nutrition mapping, conversational layer, model training and reports.
+- Worked on custom dataset and created Non Technical report and README.md file.
 
 ### Samreen Fathima
 - Contributed to dataset analysis, model training, and documentation.
