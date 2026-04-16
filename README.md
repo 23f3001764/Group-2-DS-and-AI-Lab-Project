@@ -20,7 +20,7 @@ Both URLs serve the identical Gradio application running on Lightning AI with GP
 
 1. Takes a food photograph (with a ₹10 coin in frame for scale calibration)
 2. Segments each food item using SAM3
-3. Classifies items across 80 Indian food categories (97.92% Top-1 accuracy)
+3. Classifies items across 79 Indian food categories (97.92% Top-1 accuracy)
 4. Estimates real-world portion weight using PCA geometry + food-specific density
 5. Returns a full macro/micronutrient breakdown and personalised dietary suggestions
 
