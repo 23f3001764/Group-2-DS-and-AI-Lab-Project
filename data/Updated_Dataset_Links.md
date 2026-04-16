@@ -29,7 +29,7 @@ https://drive.google.com/drive/folders/1Ijd5IWYMPFcme9OFmhU5N7E6XPzdIy_d?usp=sha
 
 ------------------------------------------------------------
 
-## 5. Graph Explanation
+## 4. Graph Explanation
 This document explains all the graphs generated in milestone 3 coding.
 
 View Link:
