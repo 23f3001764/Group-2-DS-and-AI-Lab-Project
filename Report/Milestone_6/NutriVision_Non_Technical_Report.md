@@ -14,7 +14,7 @@ How does it work?
 
 You upload or take a photo of your food. The AI identifies the food items in the image and estimates the portion size using a ₹10 coin as a reference. It then calculates the approximate nutritional values such as calories and nutrients.
 
-![Report](../Report/Images/ds1.jpg)
+![Report](/Report/Images/ds1.jpg)
 
 **Application Link:**  
 [**https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai**](https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai)
@@ -69,42 +69,26 @@ Food example:
 * Image of Samosa
 * Image of Moong dal halwa
 
-**![Report](../Report/Images/ds2.jpg)**
+**![Report](/Report/Images/ds2.jpg)**
 
 
-**![Report](../Report/Images/ds5.jpg)**
+**![Report](/Report/Images/ds5.jpg)**
 
 
 ### 6. 📊 Example Outputs
 
 **6.1 Food \- Samosa**
 
-**![Report](../Report/Images/ds3.jpg)**
+**![Report](/Report/Images/ds3.jpg)**
 
-**![Report](../Report/Images/ds7.jpg)**
+**![Report](/Report/Images/ds7.jpg)**
 
-**Output table with all nutritional values of food(samosa):**
-
-| Food | samosa |
-| :---: | :---: |
-| **Weight (g)** | 104 |
-| **Calories (kcal)** | 600.5 |
-| **Carbs (g)** | 9.6 |
-| **Protein (g)** | 1.8 |
-| **Fat (g)** | 61.6 |
-| **Free sugar (g)** | 0.3 |
-| **Fibre (g)** | 1.2 |
-| **Sodium (mg)** | 79.8 |
-| **Calcium (mg)** | 7.9 |
-| **Iron (mg)** | 0.5 |
-| **Vitamin C (mg)** | 11.7 |
-| **Folate (mcg)** | 13.2 |
 
 **6.2 Food \- Moong dal halwa**
 
-**![Report](../Report/Images/ds4.jpg)**
+**![Report](/Report/Images/ds4.jpg)**
 
-**![Report](../Report/Images/ds6.jpg)**
+**![Report](/Report/Images/ds6.jpg)**
 
 
 ### 7. 🛠️ Troubleshooting

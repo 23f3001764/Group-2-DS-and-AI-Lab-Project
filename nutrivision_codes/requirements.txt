@@ -1,33 +1,33 @@
 # ── Deep Learning ─────────────────────────────────────────────────────────
-torch
-torchvision
-timm
-transformers
+torch==2.11.0
+torchvision==0.26.0
+timm==1.0.26
+transformers==5.5.1
 
 # ── Computer Vision / Image Processing ────────────────────────────────────
-albumentations
-opencv-python-headless
-pillow
+albumentations==2.0.8
+opencv-python-headless==4.13.0.92
+pillow==10.4.0
 
 # ── ML / Math ─────────────────────────────────────────────────────────────
-numpy
-scikit-learn
+numpy==2.4.4
+scikit-learn==1.8.0
 
 # ── LLM / LangChain ───────────────────────────────────────────────────────
-langchain-core
-langchain-openai
-openai
+langchain-core==1.2.28
+langchain-openai==1.1.12
+openai==2.31.0
 
-# ── Data / Plotting ────────────────────────────────────────────────────────
-pandas
-matplotlib
+# ── Data / Plotting ───────────────────────────────────────────────────────
+pandas==3.0.2
+matplotlib==3.10.8
 
 # ── Gradio UI ─────────────────────────────────────────────────────────────
-gradio
+gradio==6.11.0
 
-# ── Pydantic (used in pipeline for output parsing) ─────────────────────────
-pydantic
+# ── Pydantic (used in pipeline for output parsing) ────────────────────────
+pydantic==2.12.5
 
 # ── HuggingFace Hub (model download, SAM3) ────────────────────────────────
-huggingface_hub
+huggingface_hub==1.9.2
 gdown

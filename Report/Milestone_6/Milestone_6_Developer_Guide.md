@@ -27,128 +27,121 @@ Input Image
 → Nutrition Lookup
 → LLM Suggestions
 
+## **System Architecture**
+```
+User Input (Image)
+        │
+        ▼
+Gradio Interface (app.py)
+        │
+        ▼
+Inference Pipeline (pipeline.py)
+        │
+        ▼
+Model Loader (models.py)
+        │
+        ▼
+Prediction (Food Class)
+        │
+        ▼
+Nutrition Mapping (JSON files)
+        │
+        ▼
+Final Output (Calories, Nutrition Info)
+```
+
 ## **Getting started**
 
-### 1. Open Notebook
+### 1. Prerequisites
+Ensure the following before setup:
 
-- Upload or open the main notebook in Google Colab
-- Enable GPU:
+Python 3.9 or higher
+Lightning AI environment (for deployment)
+Access to model weights (via Google Drive link)
+API credentials:
+Hugging Face Token
+Ollama API Key
 
+### 2. Environment Configuration
+Set the following environment variables in your platform (Lightning AI):
 ```
-Runtime → Change runtime type → GPU
+HF_TOKEN=<your_huggingface_token>
+OLLAMA_API_KEY=<your_ollama_api_key>
 ```
-
-### 2. Download the model .pt files and image files
-
-- The ConvNeXtV2 model is hosted externally due to GitHub size limits.
-- A default sample image is automatically downloaded in the notebook. You can also upload your own image inside the notebook.
-
-```python
-# ── Setup ─────────────────────────────────────────────
-!pip install -q gdown
-
-# Download model
-!gdown https://drive.google.com/uc?id=1dgX5MFNYdZcckuty7XqjqlfpplGCbjLx -O best_convnextv2_tiny.pt
-
-# Download sample image
-!gdown https://drive.google.com/uc?id=1TWZT2X1oVqhnK7p7BFyrmRTi08xFzXtw -O sample.jpg
-
-# Paths
-CKPT_PATH = "/content/best_convnextv2_tiny.pt"
-IMAGE_PATH = "/content/sample.jpg"
-
-print("Setup complete")
+### 3. Installation
+Install all required dependencies:
 ```
-
-### 3. API Keys
-
-This project uses external APIs for advanced features. The placeholders need to be replaced with your actual API keys.
-
-- OpenRouter (LLM dietary recommendations)
-
-```python
-os.environ["OPENROUTER_API_KEY"] = "your_key"
+pip install -r requirements.txt
 ```
+### 4. Model Setup
+1. Navigate to:
+```files_models/model_py.txt```
+3. Download the model weights from the provided Google Drive link.
+4. Place the downloaded weights inside:
+```files_models/```
+The application will not run correctly without the model weights.
 
-- Hugging Face (SAM3 Model)
+### 5. Running the Application
+Execute the application using:
+```python app.py```
 
-```python
-import os 
-os.environ["HF_TOKEN"] = "your_token"
-```
+### 6. Deployment (Lightning AI)
 
-### 4. Run the Notebook
+Configure the deployment with:
 
-Run all cells in order:
+Framework: Gradio
+Mode: Serverless
+Port: 7860
 
-1. Setup (auto download + install dependencies, models and images)
-2. Load SAM3 model
-3. Load ConvNeXtV2 model
-4. Run segmentation
-5. Run classification
-6. Compute PCA + scale
-7. Run LLM estimation
+Once deployed, the application will be accessible via a public endpoint.
 
 ## Dependencies used
 
-The complete list of dependencies used for the final run are:
+The complete list of dependencies used for the final run is:
 
 ```python
-torch
-torchvision
-transformers
-timm
+torch==2.2.2
+torchvision==0.17.2
+timm==0.9.12
+transformers==4.40.2
 
-opencv-python
-pillow
-numpy
-albumentations
+albumentations==1.4.4
+opencv-python-headless==4.9.0.80
+pillow==10.3.0
 
-matplotlib
-scikit-learn
+numpy==1.26.4
+scikit-learn==1.4.2
 
-langchain
-langchain-openrouter
-openai
+langchain-core==0.2.5
+langchain-openai==0.1.7
+openai==1.30.1
+pandas==2.2.2
+matplotlib==3.8.4
+gradio==4.31.5
 
-gdown
+pydantic==2.7.1
+huggingface_hub==0.23.0
+gdown==5.1.0
 ```
 
 ## Repository Structure
 
 ```python
 main/
+│── Archive/Deprecated_Experiments/...
 │
 ├── Notebooks/
 │   ├── EDA/
-│   │   ├── Image_Dataset_EDA.ipynb
 │   │   ├── Khana_Dataset_EDA.ipynb
-│   │   └── Nutrition_Values_Dataset_EDA.ipynb
-│   │
-│   ├── HyperParameter/
-│   │   └── Convnextv2_Tuning.ipynb
 │   │
 │   ├── Model_Training/
 │   │   ├── ConvNeXtV2_Training.ipynb
-│   │   ├── EfficientNetV2s_Training.ipynb
-│   │   ├── MLP_Training.ipynb
-│   │   ├── MobileNetV2_Training.ipynb
-│   │   ├── YOLO_MLP_Training.ipynb
-│   │   ├── YOLOv12s_Initial_Training.ipynb
-│   │   ├── YOLOv12s_Main_Training.ipynb
-│   │   ├── YOLOv12s_Final_Training.ipynb
-│   │   ├── YOLOv26_Training.ipynb
-│   │   └── training_history.csv
 │   │
 │   ├── Model_Evaluation/
 │   │   └── Model_Pipeline_Evaluation.ipynb
 │   │
 │   └── Weight_PCA/
 │       └── Weight_PCA_Pipeline.ipynb
-│
-├── Preprocessing/
-│   ├── Data_Cleaning.ipynb
-│   └── Data_Preprocessing.ipynb
 │
 ├── Presentation/
 │   ├── Milestone_1.pdf
@@ -175,6 +168,21 @@ main/
 ├── data/
 │   └── data.md
 │
+├── nutrivision_codes/
+│   └── files_models/
+│   │   ├── food_density.json        # Density values for portion estimation
+│   │   ├── food_nutrition.json      # Nutritional database
+│   │   └── model_py.txt             # Contains link to model weights
+│   │
+│   ├── test_images/..               # Sample inputs for testing
+│   │
+│   ├── app.py                       # Entry point (Gradio UI)
+│   ├── config.py                    # Configuration and constants
+│   ├── models.py                    # Model loading logic
+│   ├── pipeline.py                  # Core inference pipeline
+│   ├── requirements.txt             # Dependencies
+│   └── README.md
+│
 ├── .gitignore
 │
 └── NutriVision – AI Food Analyzer.pdf
@@ -189,51 +197,27 @@ This repository includes additional notebooks for experimentation and model deve
 
 These are not required to run the final pipeline and are provided for reference.
 
-## **Notes**
-
-#### 1. File Paths
-
-All paths are set for Colab:
-
-```python
-CKPT_PATH = "/content/best_convnextv2_tiny.pt"
-IMAGE_PATH = "/content/sample.jpg"
-```
-
-If running locally:
-
-- Update paths accordingly
-- Ensure files exist before execution
-
-#### 2. Hugging Face (SAM3 Access)
-
-SAM3 is a gated model.
-
-- Users must request access on Hugging Face
-- Login is required before loading the model
-
-If authentication fails:
-
-- Segmentation step will fail
-
-#### 3. API Keys
-
-LLM-based weight estimation requires an OpenRouter API key.
-
-- If not provided → step is skipped
-- Core pipeline still runs
-
-#### 4. GPU vs CPU Execution
-
-- GPU is recommended for SAM3 and ConvNeXt
-- On CPU:
-    - Execution will be significantly slower
-    - Mixed precision is automatically disable
-
-#### 5. Image Requirements
-
-For best results:
-
-- Ensure food and coin are clearly visible
-- Avoid heavy occlusion
-- Use good lighting conditions
+## Module Description
+- app.py
+Main application entry point
+Builds and launches the Gradio interface
+Handles user input and displays output
+- pipeline.py
+Core logic for inference
+Handles:
+Image preprocessing
+Model prediction
+Post-processing
+- models.py
+Loads trained model and weights
+Ensures the model is ready for inference
+- config.py
+Stores:
+File paths
+Constants
+Environment configurations
+- JSON Files
+food_nutrition.json
+→ Maps food items to nutritional values
+food_density.json
+→ Supports portion/density-based calculations
