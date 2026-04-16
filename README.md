@@ -45,8 +45,19 @@ The pipeline is a streaming generator — Gradio streams progress after each of 
 
 ### Prerequisites
 
-- Hugging Face account with [SAM3 access](https://huggingface.co/facebook/sam3) approved
-- OpenRouter API key (for LLM weight reasoning)
+#### ☁️ Platform (Recommended)
+- Lightning AI (for deployment with GPU support)  
+- Alternatively: Local machine or Google Colab  
+
+#### 🔑 API Access
+- Hugging Face account with access to SAM3 model  
+- Hugging Face Token (`HF_TOKEN`)  
+- Ollama / OpenRouter API Key (`OLLAMA_API_KEY`)  
+
+#### 📦 Dependencies
+- Install required Python libraries:
+pip install -r nutrivision_codes/requirements.txt
+
 
 ## ⚙️ Running the Project on Lightning AI
 
@@ -87,7 +98,6 @@ Before running the app, download the best image classification model:
 
 Navigate to the correct directory and run:
 
-'''bash
 python nutrivision_codes/app.py
 
 ---
