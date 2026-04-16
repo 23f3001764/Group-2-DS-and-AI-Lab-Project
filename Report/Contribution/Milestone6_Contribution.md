@@ -8,7 +8,6 @@ NutriVision -- AI Powered Indian Food Nutrition Estimation System
 ## Overall Contributions (Milestone 1 to 5 Merge)
 
 ### Sahil Raj
-- Led project direction and research.
 - Contributed to EDA, model training, hyperparameter tuning, and evaluation.
 - Worked on final deployment.
 - Created Technical Report.
@@ -16,7 +15,7 @@ NutriVision -- AI Powered Indian Food Nutrition Estimation System
 ### Sahil Sharma
 - Worked on dataset processing, model training, and evaluation.
 - Developed deployment pipeline and handled deployment code.
-- Deployed system along with Sahil Raj.
+- Deployed system.
 
 ### Aman Mani Tiwari
 - Contributed to EDA, reports, and documentation.
@@ -43,13 +42,18 @@ NutriVision -- AI Powered Indian Food Nutrition Estimation System
 ### 3. User Guide
 **Created by: Tasneem Shahnawaz**
 
-### 4. Developer Guide and Codebase
+### 4. Developer Guide 
 **Created by: Samreen Fathima**
 
-### 5. Deployment
+### 5. Deployment code 
+**Created by: Sahil Sharma**
+
+### 6. Deployment
 **Handled by: Sahil Sharma and Sahil Raj**
 
-- Prepared deployment scripts and infrastructure.
+### 7. Custom Dataset
+**Handled by: Everyone**
+
 - Successfully deployed the system.
 
 ------------------------------------------------------------
