@@ -61,9 +61,15 @@ Access to model weights (via Google Drive link)
 API credentials:
 Hugging Face Token
 Ollama API Key
-
+### 2. Clone the repo on root folder
+```
+git clone --filter=blob:none --sparse https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
+cd Group-2-DS-and-AI-Lab-Project
+git sparse-checkout set nutrivision_codes
+cd nutrivision_codes
+```
 ### 2. Environment Configuration
-Set the following environment variables in your platform (Lightning AI):
+Set the following environment variables in your platform in global api (Lightning AI):
 ```
 HF_TOKEN=<your_huggingface_token>
 OLLAMA_API_KEY=<your_ollama_api_key>
@@ -73,19 +79,29 @@ Install all required dependencies:
 ```
 pip install -r requirements.txt
 ```
-### 4. Model Setup
+### 4. Activate the GPU T4
+GPU cost : 0.14$ per hour
+### 5. Model Setup
 1. Navigate to:
 ```files_models/model_py.txt```
 3. Download the model weights from the provided Google Drive link.
+```
+cd files_models
+gdown https://drive.google.com/file/d/1w8PQt-7Ofn4pjTUUC2YqwIxEicy2Zxhe/view?usp=sharing
+cd ..
+```
 4. Place the downloaded weights inside:
 ```files_models/```
-The application will not run correctly without the model weights.
+The application will not run without the model weights.
+you can correct all the paths on config.py if you face any error
 
-### 5. Running the Application
+### 6. Running the Application
 Execute the application using:
-```python app.py```
-
-### 6. Deployment (Lightning AI)
+```
+python app.py
+```
+the you can acess the web app on network url showing in the terminal
+### 7. Deployment (Lightning AI)
 
 Configure the deployment with:
 

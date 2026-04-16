@@ -4,14 +4,14 @@ import os
 # Place your model checkpoint and nutrition JSON in the same folder as app.py
 # or set these env vars before running.
 CKPT_PATH = (
-    "/teamspace/studios/this_studio/nutrivision/files_models/best_convnextv2_tiny.pt"
+    "/teamspace/studios/this_studio/nutrivision_codes/files_models/best_convnextv2_tiny.pt"
 )
 NUTRITION_PATH = (
-    "/teamspace/studios/this_studio/nutrivision/files_models/food_nutrition.json"
+    "/teamspace/studios/this_studio/nutrivision_codes/files_models/food_nutrition.json"
 )
-SAVE_DIR = "/teamspace/studios/this_studio/nutrivision/SAVE_DIR"
+SAVE_DIR = "/teamspace/studios/this_studio/nutrivision_codes/SAVE_DIR"
 DENSITY_PATH = (
-    "/teamspace/studios/this_studio/nutrivision/files_models/food_density.json"
+    "/teamspace/studios/this_studio/nutrivision_codes/files_models/food_density.json"
 )
 
 
