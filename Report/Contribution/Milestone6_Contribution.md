@@ -37,10 +37,10 @@ NutriVision -- AI Powered Indian Food Nutrition Estimation System
 **Created by: Sahil Raj**
 
 ### 2. Non-Technical Report
-**Created by: Aman Mani Tiwari**
+**Created by: Tasneem Shahnawaz**
 
 ### 3. User Guide
-**Created by: Tasneem Shahnawaz**
+**Created by: Aman Mani Tiwari**
 
 ### 4. Developer Guide 
 **Created by: Samreen Fathima**
