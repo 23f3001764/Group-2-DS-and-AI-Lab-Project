@@ -113,7 +113,20 @@ Or use the Lightning AI generated public URL.
 ![Report](Report/Images/ds4.jpg)
 
 ---
- 
+
+## Image Requirements
+
+For best results:
+
+- Place a ₹10 coin flat and clearly visible in frame — the pipeline halts at Step 2 if no coin is detected
+- Ensure food items are not heavily occluded
+- Use good, even lighting
+- Avoid extreme angles (overhead or top-down works best)
+
+> ⚠️ The coin is required for scale calibration. Without it, the pipeline cannot estimate real-world dimensions.
+
+---
+
 
 ## Repository Structure
 
@@ -320,19 +333,6 @@ Install via:
 ```bash
 pip install -r requirements.txt
 ```
-
----
-
-## Image Requirements
-
-For best results:
-
-- Place a ₹10 coin flat and clearly visible in frame — the pipeline halts at Step 2 if no coin is detected
-- Ensure food items are not heavily occluded
-- Use good, even lighting
-- Avoid extreme angles (overhead or top-down works best)
-
-> ⚠️ The coin is required for scale calibration. Without it, the pipeline cannot estimate real-world dimensions.
 
 ---
 
