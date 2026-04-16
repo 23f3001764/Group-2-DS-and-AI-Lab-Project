@@ -105,7 +105,7 @@ Food example:
 
 Our AI model achieves an impressive 98% accuracy when tested on over 13,000 food images, and is capable of recognizing about 79 Indian dishes such as biryani, dosa, samosa, and paneer masala. The system is designed to support health-conscious individuals, fitness enthusiasts, and people with dietary restrictions by simplifying food tracking and eliminating the need for manual calorie counting. By converting food images into clear nutritional insights, NutriVision demonstrates the practical potential of AI in promoting healthier lifestyle choices. While the system provides useful estimates, the results are approximate and can be further improved with enhanced data and model refinement.
 
-### Repository Link: 
+### Repository Link:  https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
 
 ![Report](/Report/Images/sign.jpg)
 
