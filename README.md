@@ -141,10 +141,10 @@ For best results:
 ## Repository Structure
 
 ```
-.
-├── .gitignore                         # Git ignore rules
+Nutrivision
+├── .gitignore
 
-├── 📂 Archive/                        # Deprecated / older experiments
+├── 📂 Archive/                             # Deprecated experiments
 │   └── 📂 Deprecated_Experiments/
 │       ├── MLP_Training.ipynb
 │       ├── YOLO_MLP_Training.ipynb
@@ -159,16 +159,16 @@ For best results:
 │       └── 📂 HyperParameter/
 │           └── Convnextv2_Tuning.ipynb
 
-├── 📂 Notebooks/                      # Active notebooks for development
+├── 📂 Notebooks/                           # Active notebooks
 │   ├── 📂 Model Training/
 │   │   └── ConvNeXtV2_Training.ipynb
 │   │
 │   └── 📂 Model evaluation/
 │       └── Model_Pipeline_Evaluation.ipynb
 
-├── 📂 Report/                         # Project documentation & reports
-│   ├── 📂 Images/                     # Dataset samples & model outputs
-│   │   └── (ds images, model outputs, graphs, etc.)
+├── 📂 Report/                              # Reports & documentation
+│   ├── 📂 Images/                          # Dataset & output visuals
+│   │   └── (dataset samples, model outputs, graphs)
 │   │
 │   ├── 📄 Milestone Reports
 │   │   ├── Milestone_1_Report.md
@@ -176,46 +176,52 @@ For best results:
 │   │   ├── Milestone_4_Report.pdf
 │   │   └── Milestone_5_Report.pdf
 │   │
-│   ├── 📂 Milestone_6/                # Final deliverables
+│   ├── 📂 Milestone_6/                     # Final deliverables
 │   │   ├── User Guide.pdf
-│   │   ├── Technical Report.pdf
+│   │   ├── Mileston_6_Technical_Report.pdf
 │   │   ├── NutriVision_Non_Technical_Report.md
-│   │   └── Developer Guide.md
+│   │   └── Milestone_6_Developer_Guide.md
 │   │
-│   └── 📂 Contribution/              # Team contributions
+│   └── 📂 Contribution/                   # Team contributions
 │       ├── Milestone1_Contribution.md
 │       ├── Milestone2_Contribution.md
 │       ├── Milestone3_Contribution.md
-│       └── Milestone4_Contribution.md
+│       ├── Milestone4_Contribution.md
+│       ├── Milestone5_Contribution.md
+│       └── Milestone6_Contribution.md
 
-├── 📂 Presentation/                  # Project presentations
+├── 📂 Presentation/                       # Project presentations
 │   ├── Milestone_1.pdf
 │   ├── Milestone_2.pptx
 │   ├── Milestone_3.pdf
 │   ├── Milestone_4.pdf
 │   └── Milestone_5.pdf
 
-├── 📂 nutrivision_codes/             # Core application code
-│   ├── 📂 files_models/              # Model-related data
+├── 📂 nutrivision_codes/                  # Core application code
+│   ├── 📂 files_models/
 │   │   ├── model_py.txt
 │   │   ├── food_density.json
 │   │   └── food_nutrition.json
 │   │
-│   ├── 📂 test_images/               # Sample input images
-│   │   └── (food image samples)
+│   ├── 📂 test_images/
+│   │   ├── Aloo_paratha1.jpeg
+│   │   ├── Badam_kheer3.jpeg
+│   │   ├── photo_6210513029619715654_y.jpg
+│   │   └── photo_6226439743310859649_y.jpg
 │   │
-│   ├── 🚀 app.py                    # Main application interface
-│   ├── 🔄 pipeline.py               # End-to-end pipeline logic
-│   ├── 🧠 models.py                 # Model definitions & loading
-│   ├── ⚙️ config.py                # Configuration settings
-│   ├── 📦 requirements.txt         # Dependencies
-│   └── 📘 ReadMe.md                # Module-specific documentation
+│   ├── 🚀 app.py                         # Main application
+│   ├── 🔄 pipeline.py                    # Processing pipeline
+│   ├── 🧠 models.py                      # Model logic
+│   ├── ⚙️ config.py                     # Configurations
+│   ├── 📦 requirements.txt              # Dependencies
+│   └── 📘 ReadMe.md                     # Module documentation
 
-├── 📂 data/                         # Dataset info & references
-│   └── data.md
+├── 📂 data/                              # Dataset references
+│   ├── data.md
+│   └── Updated_Dataset_Links.md
 
 ├── 📄 NutriVision – AI Food Analyzer (Problem Statement).pdf
-└── 📘 README.md                     # Main project documentation                     
+└── 📘 README.md                    
 ```
 
 ### Key Source Files
