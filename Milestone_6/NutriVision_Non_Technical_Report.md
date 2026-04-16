@@ -70,11 +70,19 @@ Food example:
 
 **![Report](../Report/Images/ds2.jpg)**
 
+**![Report](../Report/Images/ds5.jpg)**
+
 ### 6. 📊 Example Outputs
 
 **6.1 Food \- Samosa**
 
 **![Report](../Report/Images/ds3.jpg)**
+
+**![Report](../Report/Images/ds7.jpg)**
+
+**![Report](../Report/Images/ds4.jpg)**
+
+**![Report](../Report/Images/ds6.jpg)**
 
 **Output table with all nutritional values of food(samosa):**
 
