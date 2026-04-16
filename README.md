@@ -45,79 +45,8 @@ The pipeline is a streaming generator — Gradio streams progress after each of 
 
 ### Prerequisites
 
-- Google Colab (GPU recommended) or a local machine with CUDA
 - Hugging Face account with [SAM3 access](https://huggingface.co/facebook/sam3) approved
 - OpenRouter API key (for LLM weight reasoning)
-
-### 1. Open the Notebook
-
-Upload or open the main notebook in Google Colab, then enable GPU:
-
-```
-Runtime → Change runtime type → GPU
-```
-
-### 2. Download Models & Sample Image
-
-Run the setup cell (auto-executed at notebook start):
-
-```python
-!pip install -q gdown
-
-# Download ConvNeXtV2-Tiny checkpoint (~110 MB)
-!gdown https://drive.google.com/uc?id=1dgX5MFNYdZcckuty7XqjqlfpplGCbjLx -O best_convnextv2_tiny.pt
-
-# Download sample image
-!gdown https://drive.google.com/uc?id=1TWZT2X1oVqhnK7p7BFyrmRTi08xFzXtw -O sample.jpg
-
-CKPT_PATH  = "/content/best_convnextv2_tiny.pt"
-IMAGE_PATH = "/content/sample.jpg"
-```
-
-> **Note:** The ConvNeXtV2 model is hosted externally due to GitHub's file size limits.
-
-### 3. Set API Keys
-
-```python
-import os
-
-os.environ["OPENROUTER_API_KEY"] = "your_openrouter_key"   # LLM weight reasoning
-os.environ["HF_TOKEN"]           = "your_huggingface_token" # SAM3 (gated model)
-```
-
-> If `HF_TOKEN` is missing or SAM3 access is not approved, segmentation will fail at Step 1.
-> If `OPENROUTER_API_KEY` is missing, the LLM weight step is skipped — the core pipeline still runs.
-
-### 4. Run All Cells
-
-Execute cells in order:
-
-1. Setup (installs dependencies, downloads model + image)
-2. Load SAM3 model
-3. Load ConvNeXtV2 model
-4. Run segmentation
-5. Run classification
-6. Compute PCA + scale
-7. Run LLM estimation
-
-### 5. Use the Web App
-
-For the deployed Gradio interface:
-
-- Upload a photo of your meal with a ₹10 coin lying flat in frame
-- Click Analyse
-- Watch the 5-step progress checklist stream live
-- View the annotated image, nutrition table, and LLM weight reasoning
-
-## Gradio Interface
-
-![Report](Report/Images/ds1.jpg)
-
-### Gradio Output Interface
-
-![Report](Report/Images/ds4.jpg)
-
----
 
 ## ⚙️ Running the Project on Lightning AI
 
@@ -167,6 +96,24 @@ python nutrivision_codes/app.py
 Once running, open: http://localhost:7860
 Or use the Lightning AI generated public URL.
 
+### 5. Use the Web App
+
+For the deployed Gradio interface:
+
+- Upload a photo of your meal with a ₹10 coin lying flat in frame
+- Click Analyse
+- Watch the 5-step progress checklist stream live
+- View the annotated image, nutrition table, and LLM weight reasoning
+
+## Gradio Interface
+
+![Report](Report/Images/ds1.jpg)
+
+### Gradio Output Interface
+
+![Report](Report/Images/ds4.jpg)
+
+---
  
 
 ## Repository Structure
