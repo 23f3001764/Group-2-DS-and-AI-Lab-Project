@@ -122,67 +122,83 @@ For the deployed Gradio interface:
 ## Repository Structure
 
 ```
-main/
-│
+.
+├── .gitignore
+
 ├── Notebooks/
 │   ├── EDA/
-│   │   ├── Image_Dataset_EDA.ipynb
-│   │   ├── Khana_Dataset_EDA.ipynb
-│   │   └── Nutrition_Values_Dataset_EDA.ipynb
+│   │   └── Image_Dataset_Eda.ipynb
 │   │
-│   ├── HyperParameter/
-│   │   └── Convnextv2_Tuning.ipynb
-│   │
-│   ├── Model_Training/
-│   │   ├── ConvNeXtV2_Training.ipynb
-│   │   ├── EfficientNetV2s_Training.ipynb
+│   ├── Model Training/
 │   │   ├── MLP_Training.ipynb
-│   │   ├── MobileNetV2_Training.ipynb
+│   │   ├── ConvNeXtV2_Training.ipynb
 │   │   ├── YOLO_MLP_Training.ipynb
 │   │   ├── YOLOv12s_Initial_Training.ipynb
 │   │   ├── YOLOv12s_Main_Training.ipynb
 │   │   ├── YOLOv12s_Final_Training.ipynb
-│   │   ├── YOLOv26_Training.ipynb
 │   │   └── training_history.csv
 │   │
-│   ├── Model_Evaluation/
-│   │   └── Model_Pipeline_Evaluation.ipynb
+│   ├── HyperParameter/
+│   │   └── Convnextv2_Tuning.ipynb
 │   │
-│   └── Weight_PCA/
-│       └── Weight_PCA_Pipeline.ipynb
-│
-├── Preprocessing/
-│   ├── Data_Cleaning.ipynb
-│   └── Data_Preprocessing.ipynb
-│
-├── Presentation/
-│   ├── Milestone_1.pdf
-│   ├── Milestone_2.pdf
-│   ├── Milestone_3.pdf
-│   ├── Milestone_4.pdf
-│   └── Milestone_5.pdf
-│
+│   └── Model evaluation/
+│       └── Model_Pipeline_Evaluation.ipynb
+
 ├── Report/
-│   ├── Contribution/
-│   │   ├── Milestone1_Contribution.md
-│   │   ├── Milestone2_Contribution.md
-│   │   ├── Milestone3_Contribution.md
-│   │   └── Milestone4_Contribution.md
-│   │
 │   ├── Images/
+│   │   ├── ds1.jpg, ds2.jpg, ds3.jpg, ds4.jpg
+│   │   ├── image1.png ... image22.png
+│   │   ├── M3_1.png ... M3_20.jpg
+│   │   ├── img_1.jpg ... img_11.jpg
+│   │   └── report_img.jpg
 │   │
 │   ├── Milestone_1_Report.md
 │   ├── Milestone_2_Report.md
-│   ├── Milestone_3_Report.md
 │   ├── Milestone_4_Report.pdf
-│   └── Milestone_5_Report.pdf
-│
+│   ├── Milestone_5_Report.pdf
+│   │
+│   └── Contribution/
+│       ├── Milestone1_Contribution.md
+│       ├── Milestone2_Contribution.md
+│       ├── Milestone3_Contribution.md
+│       └── Milestone4_Contribution.md
+
+├── Milestone_6/
+│   ├── User Guide.pdf
+│   ├── Mileston_6_Technical_Report.docx.pdf
+│   └── Milestone_6_Developer_Guide.md
+
+├── Presentation/
+│   ├── Milestone_1.pdf
+│   ├── Milestone_2.pptx
+│   ├── Milestone_3.pdf
+│   ├── Milestone_4.pdf
+│   └── Milestone_5.pdf
+
+├── nutrivision_codes/
+│   ├── files_models/
+│   │   ├── model_py.txt
+│   │   ├── food_density.json
+│   │   └── food_nutrition.json
+│   │
+│   ├── test_images/
+│   │   ├── Aloo_paratha1.jpeg
+│   │   ├── Badam_kheer3.jpeg
+│   │   ├── sample_1.jpg
+│   │   └── sample_2.jpg
+│   │
+│   ├── app.py
+│   ├── pipeline.py
+│   ├── models.py
+│   ├── config.py
+│   ├── requirements.txt
+│   └── ReadMe.md
+
 ├── data/
 │   └── data.md
-│
-├── .gitignore
-│
-└── NutriVision – AI Food Analyzer.pdf
+
+├── NutriVision – AI Food Analyzer (Problem Statement).pdf
+└── README.md
 ```
 
 ### Key Source Files
