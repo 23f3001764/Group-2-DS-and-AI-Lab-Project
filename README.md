@@ -30,7 +30,7 @@ Both URLs serve the identical Gradio application running on Lightning AI with GP
 Input Image
   → SAM3 Segmentation          (pixel masks for food, container, coin)
   → Coin Scale Extraction      (₹10 coin → px/cm calibration factor)
-  → ConvNeXtV2 Classification  (80 Indian food classes)
+  → ConvNeXtV2 Classification  (79 Indian food classes)
   → PCA Geometry               (rotation-invariant major/minor axes)
   → LLM Weight Estimation      (geometry model × density-enforced lookup)
   → Nutrition Scaling          (per-100g values × estimated weight)
