@@ -273,22 +273,6 @@ PROMPT_COIN = "coin"
 
 ---
 
-## Data Files
-
-### `food_nutrition.json`
-
-Per-100g values for all 79 supported Indian foods, with 11 nutrient fields:
-
-```
-calories_kcal · carbohydrates_g · protein_g · fats_g · free_sugar_g
-fibre_g · sodium_mg · calcium_mg · iron_mg · vitamin_c_mg · folate_ug
-```
-
-### `food_density.json`
-
-Apparent bulk density (g/cm³) as-served, with source and basis per entry. Published values (e.g. idli: 0.53 g/cm³ from PMC/Springer) are flagged separately from engineering inference values.
-
----
 
 ## Dependencies
 
