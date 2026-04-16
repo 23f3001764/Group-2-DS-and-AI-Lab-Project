@@ -256,7 +256,7 @@ Or use the Lightning AI generated public URL.
 | `pipeline.py` | All ML logic: SAM3 segmentation, coin scale, ConvNeXtV2 classification, PCA geometry, LLM weight estimation, nutrition scaling |
 | `models.py` | Lazy singleton loader for SAM3 and ConvNeXtV2 — loads once, caches for all Gradio sessions |
 | `config.py` | Single source of truth for all thresholds, paths, and prompt strings |
-| `food_nutrition.json` | 11 nutrients per 100g for each of 80 Indian food classes |
+| `food_nutrition.json` | 11 nutrients per 100g for each of 79 Indian food classes |
 | `food_density.json` | Food-specific bulk densities (g/cm³) with source and basis per entry |
 
 ---
