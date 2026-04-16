@@ -156,24 +156,32 @@ main/
 │   └── Data_Preprocessing.ipynb
 │
 ├── Presentation/
-│   ├── Milestone_1.pdf  →  Milestone_5.pdf
+│   ├── Milestone_1.pdf
+│   ├── Milestone_2.pdf
+│   ├── Milestone_3.pdf
+│   ├── Milestone_4.pdf
+│   └── Milestone_5.pdf
 │
 ├── Report/
 │   ├── Contribution/
+│   │   ├── Milestone1_Contribution.md
+│   │   ├── Milestone2_Contribution.md
+│   │   ├── Milestone3_Contribution.md
+│   │   └── Milestone4_Contribution.md
+│   │
 │   ├── Images/
-│   └── Milestone_1_Report.md  →  Milestone_5_Report.pdf
+│   │
+│   ├── Milestone_1_Report.md
+│   ├── Milestone_2_Report.md
+│   ├── Milestone_3_Report.md
+│   ├── Milestone_4_Report.pdf
+│   └── Milestone_5_Report.pdf
 │
 ├── data/
 │   └── data.md
 │
-├── app.py                  ← Gradio UI (517 lines)
-├── pipeline.py             ← Core ML pipeline (839 lines)
-├── models.py               ← Lazy model loader (SAM3 + ConvNeXtV2)
-├── config.py               ← All paths, thresholds, prompts, LLM settings
-├── food_nutrition.json     ← Per-100g nutritional values for 80 foods
-├── food_density.json       ← Apparent bulk density (g/cm³) for 80 foods
-├── requirements.txt
 ├── .gitignore
+│
 └── NutriVision – AI Food Analyzer.pdf
 ```
 
