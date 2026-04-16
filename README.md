@@ -173,82 +173,79 @@ Or use the Lightning AI generated public URL.
 
 ```
 .
-├── .gitignore
+├── .gitignore                         # Git ignore rules
 
-├── Notebooks/
-│   ├── EDA/
-│   │   └── Image_Dataset_Eda.ipynb
+├── 📂 Archive/                        # Deprecated / older experiments
+│   └── 📂 Deprecated_Experiments/
+│       ├── MLP_Training.ipynb
+│       ├── YOLO_MLP_Training.ipynb
+│       ├── YOLOv12s_Initial_Training.ipynb
+│       ├── YOLOv12s_Main_Training.ipynb
+│       ├── YOLOv12s_Final_Training.ipynb
+│       ├── training_history.csv
+│       │
+│       ├── 📂 EDA/
+│       │   └── Image_Dataset_Eda.ipynb
+│       │
+│       └── 📂 HyperParameter/
+│           └── Convnextv2_Tuning.ipynb
+
+├── 📂 Notebooks/                      # Active notebooks for development
+│   ├── 📂 Model Training/
+│   │   └── ConvNeXtV2_Training.ipynb
 │   │
-│   ├── Model Training/
-│   │   ├── MLP_Training.ipynb
-│   │   ├── ConvNeXtV2_Training.ipynb
-│   │   ├── YOLO_MLP_Training.ipynb
-│   │   ├── YOLOv12s_Initial_Training.ipynb
-│   │   ├── YOLOv12s_Main_Training.ipynb
-│   │   ├── YOLOv12s_Final_Training.ipynb
-│   │   └── training_history.csv
-│   │
-│   ├── HyperParameter/
-│   │   └── Convnextv2_Tuning.ipynb
-│   │
-│   └── Model evaluation/
+│   └── 📂 Model evaluation/
 │       └── Model_Pipeline_Evaluation.ipynb
 
-├── Report/
-│   ├── Images/
-│   │   ├── ds1.jpg, ds2.jpg, ds3.jpg, ds4.jpg
-│   │   ├── image1.png ... image22.png
-│   │   ├── M3_1.png ... M3_20.jpg
-│   │   ├── img_1.jpg ... img_11.jpg
-│   │   └── report_img.jpg
+├── 📂 Report/                         # Project documentation & reports
+│   ├── 📂 Images/                     # Dataset samples & model outputs
+│   │   └── (ds images, model outputs, graphs, etc.)
 │   │
-│   ├── Milestone_1_Report.md
-│   ├── Milestone_2_Report.md
-│   ├── Milestone_4_Report.pdf
-│   ├── Milestone_5_Report.pdf
+│   ├── 📄 Milestone Reports
+│   │   ├── Milestone_1_Report.md
+│   │   ├── Milestone_2_Report.md
+│   │   ├── Milestone_4_Report.pdf
+│   │   └── Milestone_5_Report.pdf
 │   │
-│   └── Contribution/
+│   ├── 📂 Milestone_6/                # Final deliverables
+│   │   ├── User Guide.pdf
+│   │   ├── Technical Report.pdf
+│   │   └── Developer Guide.md
+│   │
+│   └── 📂 Contribution/              # Team contributions
 │       ├── Milestone1_Contribution.md
 │       ├── Milestone2_Contribution.md
 │       ├── Milestone3_Contribution.md
 │       └── Milestone4_Contribution.md
 
-├── Milestone_6/
-│   ├── User Guide.pdf
-│   ├── Mileston_6_Technical_Report.docx.pdf
-│   └── Milestone_6_Developer_Guide.md
-
-├── Presentation/
+├── 📂 Presentation/                  # Project presentations
 │   ├── Milestone_1.pdf
 │   ├── Milestone_2.pptx
 │   ├── Milestone_3.pdf
 │   ├── Milestone_4.pdf
 │   └── Milestone_5.pdf
 
-├── nutrivision_codes/
-│   ├── files_models/
+├── 📂 nutrivision_codes/             # Core application code
+│   ├── 📂 files_models/              # Model-related data
 │   │   ├── model_py.txt
 │   │   ├── food_density.json
 │   │   └── food_nutrition.json
 │   │
-│   ├── test_images/
-│   │   ├── Aloo_paratha1.jpeg
-│   │   ├── Badam_kheer3.jpeg
-│   │   ├── sample_1.jpg
-│   │   └── sample_2.jpg
+│   ├── 📂 test_images/               # Sample input images
+│   │   └── (food image samples)
 │   │
-│   ├── app.py
-│   ├── pipeline.py
-│   ├── models.py
-│   ├── config.py
-│   ├── requirements.txt
-│   └── ReadMe.md
+│   ├── 🚀 app.py                    # Main application interface
+│   ├── 🔄 pipeline.py               # End-to-end pipeline logic
+│   ├── 🧠 models.py                 # Model definitions & loading
+│   ├── ⚙️ config.py                # Configuration settings
+│   ├── 📦 requirements.txt         # Dependencies
+│   └── 📘 ReadMe.md                # Module-specific documentation
 
-├── data/
+├── 📂 data/                         # Dataset info & references
 │   └── data.md
 
-├── NutriVision – AI Food Analyzer (Problem Statement).pdf
-└── README.md
+├── 📄 NutriVision – AI Food Analyzer (Problem Statement).pdf
+└── 📘 README.md                     # Main project documentation
 ```
 
 ### Key Source Files
