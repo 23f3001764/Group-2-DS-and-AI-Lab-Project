@@ -268,25 +268,52 @@ Or use the Lightning AI generated public URL.
 
 All runtime parameters live in `config.py` — never hard-coded in `pipeline.py`:
 
-```python
-CKPT_PATH             = '.../best_convnextv2_tiny.pt'
-NUTRITION_PATH        = '.../food_nutrition.json'
-DENSITY_PATH          = '.../food_density.json'
+```import os
 
-CONVNEXT_CONF_THRESH  = 0.40   # classifier min confidence (below → reject)
-CONF_THRESH           = 0.60   # SAM3 food segment confidence
-IOU_THRESH            = 0.40   # mask merge IoU threshold
-CONT_THRESH           = 0.25   # containment threshold (food-only vs container)
+# ── Paths ──────────────────────────────────────────────────────────────────
+# Place your model checkpoint and nutrition JSON in the same folder as app.py
+# or set these env vars before running.
+CKPT_PATH = (
+    "/teamspace/studios/this_studio/nutrivision/files_models/best_convnextv2_tiny.pt"
+)
+NUTRITION_PATH = (
+    "/teamspace/studios/this_studio/nutrivision/files_models/food_nutrition.json"
+)
+SAVE_DIR = "/teamspace/studios/this_studio/nutrivision/SAVE_DIR"
+DENSITY_PATH = (
+    "/teamspace/studios/this_studio/nutrivision/files_models/food_density.json"
+)
 
-COIN_DIAMETER_CM      = 2.7    # RBI ₹10 coin known diameter
-COIN_CONF_THRESH      = 0.50   # SAM3 coin detection confidence
 
-OLLAMA_MODEL          = 'qwen3.5:397b-cloud'
+# HuggingFace token (required to download facebook/sam3 if gated)
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
+if HF_TOKEN:
+    os.environ["HF_TOKEN"] = HF_TOKEN
 
-PROMPT_1              = 'food and its bowl'
-PROMPT_2              = 'drink and its glass'
-PROMPT_3              = 'food'
-PROMPT_COIN           = 'coin'
+# ── ConvNeXtV2 threshold ───────────────────────────────────────────────────
+CONVNEXT_CONF_THRESH = 0.40
+
+# ── SAM3 thresholds ────────────────────────────────────────────────────────
+CONF_THRESH = 0.60
+IOU_THRESH = 0.40
+CONT_THRESH = 0.25
+
+# ── Coin (RBI ₹10 coin) ───────────────────────────────────────────────────
+COIN_DIAMETER_CM = 2.7
+COIN_CONF_THRESH = 0.50
+
+# ── LLM (Ollama Cloud via OpenAI-compatible endpoint) ─────────────────────
+OLLAMA_API_KEY = os.environ.get("OLLAMA", "")
+OLLAMA_BASE_URL = "https://ollama.com/v1"
+OLLAMA_MODEL = "qwen3.5:397b-cloud"
+
+
+# ── SAM3 prompt strings ────────────────────────────────────────────────────
+PROMPT_1 = "food and its bowl"
+PROMPT_2 = "drink and its glass"
+PROMPT_3 = "food"
+PROMPT_COIN = "coin"
+
 ```
 
 ---
