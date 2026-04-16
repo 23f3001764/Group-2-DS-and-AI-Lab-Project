@@ -94,24 +94,24 @@ Run all cells in order:
 The complete list of dependencies used for the final run are:
 
 ```python
-torch
-torchvision
-transformers
-timm
+torch==2.2.2
+torchvision==0.17.2
+transformers==4.41.2
+timm==0.9.16
 
-opencv-python
-pillow
-numpy
-albumentations
+opencv-python==4.9.0.80
+pillow==10.3.0
+numpy==1.26.4
+albumentations==1.4.7
 
-matplotlib
-scikit-learn
+matplotlib==3.8.4
+scikit-learn==1.4.2
 
-langchain
-langchain-openrouter
-openai
+langchain==0.2.3
+langchain-openrouter==0.1.5
+openai==1.30.1
 
-gdown
+gdown==5.2.0
 ```
 
 ## Repository Structure
