@@ -100,28 +100,39 @@ Once deployed, the application will be accessible via a public endpoint.
 The complete list of dependencies used for the final run is:
 
 ```python
-torch==2.2.2
-torchvision==0.17.2
-timm==0.9.12
-transformers==4.40.2
+# ── Deep Learning ─────────────────────────────────────────────────────────
+torch==2.11.0
+torchvision==0.26.0
+timm==1.0.26
+transformers==5.5.1
 
-albumentations==1.4.4
-opencv-python-headless==4.9.0.80
-pillow==10.3.0
+# ── Computer Vision / Image Processing ────────────────────────────────────
+albumentations==2.0.8
+opencv-python-headless==4.13.0.92
+pillow==10.4.0
 
-numpy==1.26.4
-scikit-learn==1.4.2
+# ── ML / Math ─────────────────────────────────────────────────────────────
+numpy==2.4.4
+scikit-learn==1.8.0
 
-langchain-core==0.2.5
-langchain-openai==0.1.7
-openai==1.30.1
-pandas==2.2.2
-matplotlib==3.8.4
-gradio==4.31.5
+# ── LLM / LangChain ───────────────────────────────────────────────────────
+langchain-core==1.2.28
+langchain-openai==1.1.12
+openai==2.31.0
 
-pydantic==2.7.1
-huggingface_hub==0.23.0
-gdown==5.1.0
+# ── Data / Plotting ───────────────────────────────────────────────────────
+pandas==3.0.2
+matplotlib==3.10.8
+
+# ── Gradio UI ─────────────────────────────────────────────────────────────
+gradio==6.11.0
+
+# ── Pydantic (used in pipeline for output parsing) ────────────────────────
+pydantic==2.12.5
+
+# ── HuggingFace Hub (model download, SAM3) ────────────────────────────────
+huggingface_hub==1.9.2
+gdown
 ```
 
 ## Repository Structure
@@ -221,3 +232,6 @@ food_nutrition.json
 → Maps food items to nutritional values
 food_density.json
 → Supports portion/density-based calculations
+
+Repository link: https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
+Reviewed by: 
