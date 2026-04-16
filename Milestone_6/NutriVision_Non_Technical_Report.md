@@ -112,7 +112,9 @@ Food example:
 
 * Try using a clearer image  
 * Avoid multiple food items in one image  
-* Make sure the coin is visible in the image
+* Place a ₹10 coin flat and clearly visible in frame 
+* Use good, even lighting
+* Avoid extreme angles (overhead or top-down works best)
 
 ### 8. 📊 Key Results and Real-World Impact
 
