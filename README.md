@@ -119,6 +119,56 @@ For the deployed Gradio interface:
 
 ---
 
+## ⚙️ Running the Project on Lightning AI
+
+Follow these steps to run NutriVision on Lightning AI using Gradio:
+
+---
+
+### 🔑 1. Set Environment Variables
+
+In the Lightning AI platform, go to Environment settings and add:
+
+- `HF_TOKEN` → Your Hugging Face access token  
+- `OLLAMA_API_KEY` → Your Ollama / OpenRouter API key  
+
+> These are required for SAM3 model access and LLM-based weight estimation.
+
+---
+
+### 📥 2. Download Model Weights
+
+Before running the app, download the best image classification model:
+
+- The download link is available inside: nutrivision_codes/files_models/model_py.txt
+
+- Place the downloaded `.pt` file in the correct path as defined in `config.py`
+
+---
+
+### ⚡ 3. Enable Gradio (Serverless)
+
+- Use Gradio extension in Lightning AI  
+- Enable Serverless mode 
+- Set port to: 7860
+
+---
+
+### ▶️ 4. Run the Application
+
+Navigate to the correct directory and run:
+
+'''bash
+python nutrivision_codes/app.py
+
+---
+### 🌐 5. Access the App
+
+Once running, open: http://localhost:7860
+Or use the Lightning AI generated public URL.
+
+ 
+
 ## Repository Structure
 
 ```
