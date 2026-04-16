@@ -198,25 +198,25 @@ This repository includes additional notebooks for experimentation and model deve
 These are not required to run the final pipeline and are provided for reference.
 
 ## 8. Module Description
-### 8.1 app.py
+- app.py
 Main application entry point
 Builds and launches the Gradio interface
 Handles user input and displays output
-### 8.2 pipeline.py
+- pipeline.py
 Core logic for inference
 Handles:
 Image preprocessing
 Model prediction
 Post-processing
-### 8.3 models.py
+- models.py
 Loads trained model and weights
 Ensures the model is ready for inference
-### 8.4 config.py
+- config.py
 Stores:
 File paths
 Constants
 Environment configurations
-### 8.5 JSON Files
+- JSON Files
 food_nutrition.json
 → Maps food items to nutritional values
 food_density.json
