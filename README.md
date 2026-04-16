@@ -173,7 +173,6 @@ Or use the Lightning AI generated public URL.
 
 ```
 .
-.
 ├── .gitignore                         # Git ignore rules
 
 ├── 📂 Archive/                        # Deprecated / older experiments
