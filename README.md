@@ -322,7 +322,7 @@ PROMPT_COIN = "coin"
 
 ### `food_nutrition.json`
 
-Per-100g values for all 80 supported Indian foods, with 11 nutrient fields:
+Per-100g values for all 79 supported Indian foods, with 11 nutrient fields:
 
 ```
 calories_kcal · carbohydrates_g · protein_g · fats_g · free_sugar_g
