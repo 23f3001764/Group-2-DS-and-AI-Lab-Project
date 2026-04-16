@@ -114,16 +114,6 @@ Or use the Lightning AI generated public URL.
 - Watch the 5-step progress checklist stream live
 - View the annotated image, nutrition table, and LLM weight reasoning
 
-## Gradio Interface
-
-![Report](Report/Images/ds1.jpg)
-
-### Gradio Output Interface
-
-![Report](Report/Images/ds4.jpg)
-
----
-
 ## Image Requirements
 
 For best results:
@@ -134,6 +124,16 @@ For best results:
 - Avoid extreme angles (overhead or top-down works best)
 
 > ⚠️ The coin is required for scale calibration. Without it, the pipeline cannot estimate real-world dimensions.
+
+---
+
+## Gradio Interface
+
+![Report](Report/Images/ds1.jpg)
+
+### Gradio Output Interface
+
+![Report](Report/Images/ds4.jpg)
 
 ---
 
