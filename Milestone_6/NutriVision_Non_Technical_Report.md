@@ -74,6 +74,7 @@ Food example:
 
 **![Report](../Report/Images/ds5.jpg)**
 
+
 ### 6. 📊 Example Outputs
 
 **6.1 Food \- Samosa**
