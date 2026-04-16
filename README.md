@@ -96,9 +96,8 @@ python nutrivision_codes/app.py
 Once running, open: http://localhost:7860
 Or use the Lightning AI generated public URL.
 
-### 5. Use the Web App
 
-For the deployed Gradio interface:
+### For the deployed Gradio interface:
 
 - Upload a photo of your meal with a ₹10 coin lying flat in frame
 - Click Analyse
