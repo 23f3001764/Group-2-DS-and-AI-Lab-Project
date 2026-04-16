@@ -68,20 +68,21 @@ cd Group-2-DS-and-AI-Lab-Project
 git sparse-checkout set nutrivision_codes
 cd nutrivision_codes
 ```
-### 2. Environment Configuration
+### 3. Environment Configuration
 Set the following environment variables in your platform in global api (Lightning AI):
+https://lightning.ai/<profile_id>/home?settings=secrets 
 ```
 HF_TOKEN=<your_huggingface_token>
 OLLAMA_API_KEY=<your_ollama_api_key>
 ```
-### 3. Installation
+### 4. Installation
 Install all required dependencies:
 ```
 pip install -r requirements.txt
 ```
-### 4. Activate the GPU T4
+### 5. Activate the GPU T4
 GPU cost : 0.14$ per hour
-### 5. Model Setup
+### 6. Model Setup
 1. Navigate to:
 ```files_models/model_py.txt```
 3. Download the model weights from the provided Google Drive link.
@@ -95,13 +96,15 @@ cd ..
 The application will not run without the model weights.
 you can correct all the paths on config.py if you face any error
 
-### 6. Running the Application
+### 7. Running the Application
 Execute the application using:
 ```
 python app.py
 ```
 the you can acess the web app on network url showing in the terminal
-### 7. Deployment (Lightning AI)
+### 8. Deployment (Lightning AI)
+First download & Install the gradio by clicking + sign in the right hand tool bar and then opening web apps and after installing it open the gradio
+and give the port 7860 and in running command python app.py and choose the T4 GPU
 
 Configure the deployment with:
 
