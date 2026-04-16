@@ -52,7 +52,7 @@ Final Output (Calories, Nutrition Info)
 
 ## **Getting started**
 
-### Prerequisites
+### 1. Prerequisites
 Ensure the following before setup:
 
 Python 3.9 or higher
@@ -62,18 +62,18 @@ API credentials:
 Hugging Face Token
 Ollama API Key
 
-### Environment Configuration
+### 2. Environment Configuration
 Set the following environment variables in your platform (Lightning AI):
 ```
 HF_TOKEN=<your_huggingface_token>
 OLLAMA_API_KEY=<your_ollama_api_key>
 ```
-### Installation
+### 3. Installation
 Install all required dependencies:
 ```
 pip install -r requirements.txt
 ```
-### Model Setup
+### 4. Model Setup
 1. Navigate to:
 ```files_models/model_py.txt```
 3. Download the model weights from the provided Google Drive link.
@@ -81,11 +81,11 @@ pip install -r requirements.txt
 ```files_models/```
 The application will not run correctly without the model weights.
 
-### Running the Application
+### 5. Running the Application
 Execute the application using:
 ```python app.py```
 
-### Deployment (Lightning AI)
+### 6. Deployment (Lightning AI)
 
 Configure the deployment with:
 
@@ -197,7 +197,7 @@ This repository includes additional notebooks for experimentation and model deve
 
 These are not required to run the final pipeline and are provided for reference.
 
-## 8. Module Description
+## Module Description
 - app.py
 Main application entry point
 Builds and launches the Gradio interface
