@@ -280,24 +280,39 @@ Apparent bulk density (g/cm³) as-served, with source and basis per entry. Publi
 ## Dependencies
 
 ```
-torch == 2.2.2
-torchvision == 0.17.2
-transformers == 4.41.2
-timm == 0.9.16
+# ── Deep Learning ─────────────────────────────────────────────────────────
+torch==2.11.0
+torchvision==0.26.0
+timm==1.0.26
+transformers==5.5.1
 
-opencv-python == 4.9.0.80
-pillow == 10.3.0
-numpy == 1.26.4
-albumentations == 1.4.7
+# ── Computer Vision / Image Processing ────────────────────────────────────
+albumentations==2.0.8
+opencv-python-headless==4.13.0.92
+pillow==10.4.0
 
-matplotlib == 3.8.4
-scikit-learn == 1.4.2
+# ── ML / Math ─────────────────────────────────────────────────────────────
+numpy==2.4.4
+scikit-learn==1.8.0
 
-langchain == 0.2.3
-langchain-openrouter == 0.1.5
-openai == 1.30.1
+# ── LLM / LangChain ───────────────────────────────────────────────────────
+langchain-core==1.2.28
+langchain-openai==1.1.12
+openai==2.31.0
 
-gdown == 5.2.0
+# ── Data / Plotting ───────────────────────────────────────────────────────
+pandas==3.0.2
+matplotlib==3.10.8
+
+# ── Gradio UI ─────────────────────────────────────────────────────────────
+gradio==6.11.0
+
+# ── Pydantic (used in pipeline for output parsing) ────────────────────────
+pydantic==2.12.5
+
+# ── HuggingFace Hub (model download, SAM3) ────────────────────────────────
+huggingface_hub==1.9.2
+gdown
 ```
 
 Install via:
