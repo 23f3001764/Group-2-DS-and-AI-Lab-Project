@@ -82,13 +82,6 @@ Food example:
 
 **![Report](../Report/Images/ds7.jpg)**
 
-**6.1 Food \- Moong dal halwa**
-
-**![Report](../Report/Images/ds4.jpg)**
-
-**![Report](../Report/Images/ds6.jpg)**
-
-
 **Output table with all nutritional values of food(samosa):**
 
 | Food | samosa |
@@ -105,6 +98,13 @@ Food example:
 | **Iron (mg)** | 0.5 |
 | **Vitamin C (mg)** | 11.7 |
 | **Folate (mcg)** | 13.2 |
+
+**6.2 Food \- Moong dal halwa**
+
+**![Report](../Report/Images/ds4.jpg)**
+
+**![Report](../Report/Images/ds6.jpg)**
+
 
 ### 7. 🛠️ Troubleshooting
 
