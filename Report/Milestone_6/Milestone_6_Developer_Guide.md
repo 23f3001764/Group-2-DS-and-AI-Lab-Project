@@ -233,5 +233,17 @@ food_nutrition.json
 food_density.json
 → Supports portion/density-based calculations
 
-Repository link: https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
-Reviewed by: 
+-Repository link: https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
+-Reviewed by: 
+-Aman Mani Tiwari
+![Aman Image](../Images/aman.jpeg)
+-Sahil Raj
+![sahil_raj Image](../Images/sahil_raj.jpeg)
+-Sahil Sharma
+![sahil Image](../Images/sahil.jpeg)
+-Samreen Fathima
+![me Image](../Images/me.jpeg)
+-Tasneem shahnawaz
+![tasneem Image](../Images/tasneem.jpeg)
+
+
