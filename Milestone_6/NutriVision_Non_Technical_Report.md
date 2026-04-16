@@ -67,8 +67,10 @@ There are about 79 recognised dishes in the supported foods section in the app. 
 Food example:
 
 * Image of Samosa
+* Image of Moong dal halwa
 
 **![Report](../Report/Images/ds2.jpg)**
+
 
 **![Report](../Report/Images/ds5.jpg)**
 
@@ -80,9 +82,12 @@ Food example:
 
 **![Report](../Report/Images/ds7.jpg)**
 
+**6.1 Food \- Moong dal halwa**
+
 **![Report](../Report/Images/ds4.jpg)**
 
 **![Report](../Report/Images/ds6.jpg)**
+
 
 **Output table with all nutritional values of food(samosa):**
 
