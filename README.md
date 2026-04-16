@@ -264,8 +264,6 @@ Or use the Lightning AI generated public URL.
 
 ## Configuration
 
-All runtime parameters live in `config.py` — never hard-coded in `pipeline.py`:
-
 ```import os
 
 # ── Paths ──────────────────────────────────────────────────────────────────
