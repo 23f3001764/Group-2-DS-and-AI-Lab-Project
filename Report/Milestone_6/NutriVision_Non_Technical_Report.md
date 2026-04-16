@@ -100,11 +100,13 @@ Food example:
 | **Vitamin C (mg)** | 11.7 |
 | **Folate (mcg)** | 13.2 |
 
+
+
 **6.2 Food \- Moong dal halwa**
 
-**![Report](../Report/Images/ds4.jpg)**
+**![Report](/Report/Images/ds4.jpg)**
 
-**![Report](../Report/Images/ds6.jpg)**
+**![Report](/Report/Images/ds6.jpg)**
 
 
 ### 7. 🛠️ Troubleshooting
