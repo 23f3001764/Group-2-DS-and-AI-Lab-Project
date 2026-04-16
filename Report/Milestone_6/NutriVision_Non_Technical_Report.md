@@ -83,24 +83,6 @@ Food example:
 
 **![Report](/Report/Images/ds7.jpg)**
 
-**Output table with all nutritional values of food(samosa):**
-
-| Food | samosa |
-| :---: | :---: |
-| **Weight (g)** | 104 |
-| **Calories (kcal)** | 600.5 |
-| **Carbs (g)** | 9.6 |
-| **Protein (g)** | 1.8 |
-| **Fat (g)** | 61.6 |
-| **Free sugar (g)** | 0.3 |
-| **Fibre (g)** | 1.2 |
-| **Sodium (mg)** | 79.8 |
-| **Calcium (mg)** | 7.9 |
-| **Iron (mg)** | 0.5 |
-| **Vitamin C (mg)** | 11.7 |
-| **Folate (mcg)** | 13.2 |
-
-
 
 **6.2 Food \- Moong dal halwa**
 
