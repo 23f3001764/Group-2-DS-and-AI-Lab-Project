@@ -266,6 +266,10 @@ For best results:
 
 ---
 
+## Tech Stack
+
+Python · PyTorch · timm · HuggingFace SAM3 · Gradio · LangChain · Ollama LLM · Lightning AI
+
 ## Team
 
 **Group 2 · Data Science & AI Lab · IIT Madras**
@@ -274,6 +278,3 @@ Sahil Raj · Sahil Sharma · Aman Mani Tiwari · Samreen Fathima · Tasneem Shah
 
 ---
 
-## Tech Stack
-
-Python · PyTorch · timm · HuggingFace SAM3 · Gradio · LangChain · Ollama LLM · Lightning AI
