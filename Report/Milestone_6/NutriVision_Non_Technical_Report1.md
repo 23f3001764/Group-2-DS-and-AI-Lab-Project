@@ -105,17 +105,17 @@ The most common errors occur with visually similar pizza variants (chicken vs. p
 
 ## Key Achievements
 
-- A food classifier trained on over 131,000 Indian food images reaching 97.92% accuracy across 80 classes — significantly outperforming general-purpose food recognition tools.
+- A food classifier trained on over 131,000 Indian food images reaching 97.92% accuracy across 79 classes — significantly outperforming general-purpose food recognition tools.
 - A practical, hardware-free method of estimating food weight from a single photograph using geometric reasoning and a coin as a reference object.
 - A fully deployed, real-time web application handling the entire pipeline end-to-end, from raw photograph to nutritional breakdown.
-- A curated nutritional database of 80 Indian dishes with 11 macro- and micronutrients per food item, plus food density values sourced from scientific literature.
+- A curated nutritional database of 79 Indian dishes with 11 macro- and micronutrients per food item, plus food density values sourced from scientific literature.
 
 ---
 
 ## Limitations
 
 - A ₹10 coin must be placed in the frame for the weight estimation to work. Without it, the pipeline cannot determine real-world scale.
-- The system supports 80 food categories. Any dish outside this set will not be recognised.
+- The system supports 79 food categories. Any dish outside this set will not be recognised.
 - Weight estimates are approximations based on geometry and assumed density values — they will not be as precise as a kitchen scale.
 - Very similar-looking foods (particularly pizza variants) are the primary source of classification errors.
 - Image quality significantly affects accuracy — low-light, overhead, or blurry photos reduce performance.
@@ -137,10 +137,10 @@ The team has identified several high-impact improvements for future development:
 
 ## Summary
 
-NutriVision represents a substantial step forward in making nutrition tracking accessible and accurate for Indian cuisine. By combining state-of-the-art image segmentation, fine-tuned food classification, and practical geometric weight estimation, the system eliminates the manual effort that makes existing nutrition apps inconvenient to use. With a near-98% food recognition accuracy and a fully deployed web application, the project delivers a working, real-world product while identifying a clear roadmap for continued improvement.
+NutriVision represents a substantial step forward in making nutrition tracking accessible and accurate for Indian cuisine. By combining state-of-the-art image segmentation, fine-tuned food classification, and practical geometric weight estimation, the system eliminates the manual effort that makes existing nutrition apps inconvenient to use. With a near 98% food recognition accuracy and a fully deployed web application, the project delivers a working, real-world product while identifying a clear roadmap for continued improvement.
 
 ---
-### Repository Link:  https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
+### Project Repository Link:  https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
 
 ![Report](/Report/Images/sign.jpg)
 
