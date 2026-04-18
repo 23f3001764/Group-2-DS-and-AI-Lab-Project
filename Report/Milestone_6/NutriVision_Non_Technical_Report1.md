@@ -1,6 +1,6 @@
-# NutriVision — Non-Technical Project Report
+# NutriVision — Non-Technical Report
 **AI-Powered Indian Food Nutrition Estimator**
-*Group 2 | Data Science & AI Lab, IIT Madras*
+
 
 ---
 
@@ -25,7 +25,7 @@ NutriVision was built to address all of these problems in one unified, automated
 
 ---
 
-## How the Final System Works (Non-Technical)
+## How the Final System Works 
 
 The user simply photographs their meal — with a ₹10 Indian coin placed in the frame as a size reference — and uploads it to the application. The system then works through five automatic steps:
 
@@ -141,4 +141,4 @@ NutriVision represents a substantial step forward in making nutrition tracking a
 
 ---
 
-*Report prepared based on the NutriVision Final Technical Report — Milestone 6, Group 2, IIT Madras.*
+
