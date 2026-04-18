@@ -1,111 +1,146 @@
+# NutriVision — Non-Technical Report
+**AI-Powered Indian Food Nutrition Estimator**
 
 
-            
+---
 
-# Nutrivision
+## What is NutriVision?
 
-## **User Guide \- (Non-Technical Report)**
+NutriVision is an AI-powered web application that analyses a photograph of a meal and automatically identifies the food items in it, estimates how much food is on the plate, and tells you the nutritional content — all without any manual input from the user.
 
-### 1. App Overview (Purpose & Use Cases)
+The system was built with Indian cuisine in mind, addressing a real gap in existing nutrition tools which either require users to type in everything manually, assume fixed unrealistic portion sizes, or simply do not recognise Indian dishes at all. NutriVision handles complex multi-dish Indian plates, like a thali, in a single photograph.
 
-NutriVision is an easy-to-use AI-based application, implemented using a Gradio web interface, that allows users to analyze food items effortlessly. Gradio is a Python library used to create simple and interactive web interfaces for machine learning models. It allows users to input data (such as images or text) and view model predictions directly through a web-based application without requiring frontend development. By uploading a food image, the system identifies the item and estimates its nutritional content, including calories, protein, and fats.
+---
 
-How does it work?
+## The Problem Being Solved
 
-You upload or take a photo of your food. The AI identifies the food items in the image and estimates the portion size using a ₹10 coin as a reference. It then calculates the approximate nutritional values such as calories and nutrients.
+Most nutrition tracking apps today have significant shortcomings:
 
-![Report](/Report/Images/ds1.jpg)
+- They require the user to manually search and log every food item eaten.
+- They assume every serving is exactly 100 grams, regardless of how much is actually on the plate.
+- They have very poor coverage of Indian regional cuisine.
+- None of them estimate the real weight of food from a photo.
 
-**Application Link:**  
-[**https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai**](https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai)
+NutriVision was built to address all of these problems in one unified, automated system.
 
-**🎯 Purpose**
+---
 
-* To make food analysis simple and accessible  
-* To help users make healthier dietary choices  
-* To demonstrate how AI can be used in everyday life
+## How the Final System Works 
 
-**🌍 Use Cases**
+The user simply photographs their meal — with a ₹10 Indian coin placed in the frame as a size reference — and uploads it to the application. The system then works through five automatic steps:
 
-* Students learning about nutrition  
-* Individuals tracking their diet  
-* Fitness enthusiasts monitoring calorie intake  
-* General users curious about food composition
+**Step 1 — Identify and outline all food items in the photo**
+An AI model scans the image and draws precise outlines around every visible food item, separating food from bowls, plates, and background.
 
-### 📥 2. Input Description (What the User Provides)
+**Step 2 — Use the coin to measure real-world size**
+The ₹10 coin (which has a fixed, known diameter of 2.7 cm) acts as a ruler. The system detects the coin in the photo and uses it to calculate the actual physical size of each food item in the image.
 
-Users interact with NutriVision by providing:
+**Step 3 — Identify what each food item is**
+A food recognition model examines each outlined food item and identifies which of the 79 supported Indian dishes it is — with a very high accuracy rate of nearly 98%.
 
-* A plate photo with a ₹10 coin as a size reference, or using your camera in the app. Place a ₹10 coin flat in frame for accurate weight estimation.
+**Step 4 — Estimate the weight of each item**
+Using the real-world dimensions calculated in Step 2, the system geometrically estimates the volume of each food item (for example, treating a bowl of curry like a cylinder) and then multiplies that by the known density of that specific food to arrive at an estimated weight in grams.
 
-The image should:
+**Step 5 — Calculate and display nutrition information**
+Using the identified food and its estimated weight, the system looks up the nutritional values from a database of 79 Indian dishes and presents a complete breakdown of calories, carbohydrates, protein, fat, sugar, fibre, sodium, calcium, iron, vitamin C, and folate.
 
-* Clearly show the food item  
-* Be well-lit and not blurry  
-* Preferably contain a single food item for better accuracy (can contain multiple foods)
+---
 
-### 📤 3. Output Description (What the User Gets)
+## The Application
 
-After processing the image, the system provides:
+The final product is a live web application accessible via a browser on any device. It has a clean two-tab interface:
 
-* 🍕 Predicted food name with weight (in grams)  
-* 🔥 Estimated calories  
-* 🥗 Nutritional values (protein, fats, etc.)
+- **Analyse tab** — where users upload or take a photo and receive their nutritional breakdown.
+- **Supported Foods tab** — a gallery showing all 79 dishes the system can recognise, grouped by category (Breads & Rice, Snacks & Chaat, Curries & Mains, Sweets & Desserts, and more).
 
-The results are displayed directly in the app interface.
+The results appear progressively as each step completes, so the user can see the pipeline working in real time. The final output includes an annotated image with coloured overlays on each detected food item, labelled with the food name and estimated weight, alongside a detailed nutrition table.
 
-### 4. 🖱️ How to Use the App
+---
 
-1. Upload a food image with coin or use camera  
-2. Click the Analyse button to analyse the food image  
-3. Wait for the model to process the image  
-4. View the predicted result and nutrition details
+## How the Project Evolved (Milestones 4–6)
 
-### 5. 📌 Example Inputs
+The project underwent a significant evolution over its later milestones. The early approach used a different type of AI model (YOLO-based object detection) and a simple regression model to estimate weight. While functional, this early approach had notable limitations in accuracy and practicality.
 
-There are about 79 recognised dishes in the supported foods section in the app. The model can identify and estimate nutrition for any of the dishes present in this section. Items not in this list will be skipped during classification.   
-Food example:
+From Milestone 4 onwards, the team redesigned the pipeline from the ground up:
 
-* Image of Samosa
-* Image of Moong dal halwa
+- The food detection component was replaced with a more powerful segmentation model (SAM3) that produces precise pixel-level outlines rather than rough bounding boxes, handling overlapping dishes far more naturally.
+- Two dedicated food classification models — ConvNeXtV2-Tiny and EfficientNetV2-S — were trained specifically on Indian food images, achieving dramatically higher accuracy than the previous approach.
+- The weight estimation method was redesigned from a simple regression model (which required large amounts of labelled data and was sensitive to camera angle) to a geometry-based approach using coin calibration, which is practical, interpretable, and works without any specialist equipment.
+- The application was built as a fully streaming web interface with live progress feedback, session management, and a polished user experience.
 
-**![Report](/Report/Images/ds2.jpg)**
+---
 
+## Results and Performance
 
-**![Report](/Report/Images/ds5.jpg)**
+### Food Recognition Accuracy
 
+| Model | Accuracy (Top-1) | F1 Score |
+|---|---|---|
+| EfficientNetV2-S | 92.85% | 0.90 |
+| ConvNeXtV2-Tiny | 97.92% | 0.97 |
+| Both models combined | 98.00% | 0.98 |
 
-### 6. 📊 Example Outputs
+The top-performing model (ConvNeXtV2-Tiny) correctly identified the food in nearly 98 out of every 100 test images. When considering the top 5 predictions, accuracy reaches 99.76%, meaning the correct dish is almost always within the system's top five guesses.
 
-**6.1 Food \- Samosa**
+### Real-World Test Results
 
-**![Report](/Report/Images/ds3.jpg)**
+When tested on actual food photos with a ₹10 coin placed in frame:
 
-**![Report](/Report/Images/ds7.jpg)**
+| Photo | What the System Detected | Estimated Weight | Estimated Calories |
+|---|---|---|---|
+| Moong dal halwa in bowl | Moong dal halwa ✅ | 100 g | 350 kcal |
+| Steamed momos (stock photo) | Steamed momo ✅ | 37 g | 52 kcal |
+| Biryani in steel bowl | Chivda ⚠️ (misclassified) | 25 g | 28 kcal |
+| Samosa on foil | Garlic bread ⚠️ (misclassified) | 6 g | 23 kcal |
 
+The two misclassifications have understandable explanations: biryani in a steel bowl photographed from a distance looks visually similar to chivda, and the samosa image was of poor quality. These reflect the inherent challenge of fine-grained Indian food recognition from real-world photographs.
 
-**6.2 Food \- Moong dal halwa**
+### Where the System Is Most and Least Reliable
 
-**![Report](/Report/Images/ds4.jpg)**
+The system performs best on foods with distinctive visual appearances — steamed momos, sabudana vada, grilled sandwiches, and most curries are identified with very high accuracy.
 
-**![Report](/Report/Images/ds6.jpg)**
+The most common errors occur with visually similar pizza variants (chicken vs. paneer vs. margherita pizza, which look nearly identical in photographs) and a small number of food categories that had very few training images. These are acknowledged limitations with clear paths to improvement.
 
+---
 
-### 7. 🛠️ Troubleshooting
+## Key Achievements
 
-**If the image is not detected properly:**
+- A food classifier trained on over 131,000 Indian food images reaching 97.92% accuracy across 79 classes — significantly outperforming general-purpose food recognition tools.
+- A practical, hardware-free method of estimating food weight from a single photograph using geometric reasoning and a coin as a reference object.
+- A fully deployed, real-time web application handling the entire pipeline end-to-end, from raw photograph to nutritional breakdown.
+- A curated nutritional database of 79 Indian dishes with 11 macro- and micronutrients per food item, plus food density values sourced from scientific literature.
 
-* Try using a clearer image  
-* Avoid multiple food items in one image  
-* Place a ₹10 coin flat and clearly visible in frame 
-* Use good, even lighting
-* Avoid extreme angles (overhead or top-down works best)
+---
 
-### 8. 📊 Key Results and Real-World Impact
+## Limitations
 
-Our AI model achieves an impressive 98% accuracy when tested on over 13,000 food images, and is capable of recognizing about 79 Indian dishes such as biryani, dosa, samosa, and paneer masala. The system is designed to support health-conscious individuals, fitness enthusiasts, and people with dietary restrictions by simplifying food tracking and eliminating the need for manual calorie counting. By converting food images into clear nutritional insights, NutriVision demonstrates the practical potential of AI in promoting healthier lifestyle choices. While the system provides useful estimates, the results are approximate and can be further improved with enhanced data and model refinement.
+- A ₹10 coin must be placed in the frame for the weight estimation to work. Without it, the pipeline cannot determine real-world scale.
+- The system supports 79 food categories. Any dish outside this set will not be recognised.
+- Weight estimates are approximations based on geometry and assumed density values — they will not be as precise as a kitchen scale.
+- Very similar-looking foods (particularly pizza variants) are the primary source of classification errors.
+- Image quality significantly affects accuracy — low-light, overhead, or blurry photos reduce performance.
 
-### Repository Link:  https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
+---
+
+## What Comes Next
+
+The team has identified several high-impact improvements for future development:
+
+- Completing a full retraining run with optimised settings, expected to push accuracy above 99%.
+- Expanding the food database to cover 150+ Indian dishes, including more regional specialties.
+- Building a mobile app with on-device processing to reduce response time from around 8 seconds to under 2 seconds.
+- Adding daily meal tracking to compare a full day's intake against Indian Council of Medical Research (ICMR) dietary guidelines.
+- Allowing users to input their age, gender, and activity level for personalised nutritional recommendations.
+- Exploring alternative reference objects (credit cards, standard plate diameters) so a coin is not always required.
+
+---
+
+## Summary
+
+NutriVision represents a substantial step forward in making nutrition tracking accessible and accurate for Indian cuisine. By combining state-of-the-art image segmentation, fine-tuned food classification, and practical geometric weight estimation, the system eliminates the manual effort that makes existing nutrition apps inconvenient to use. With a near 98% food recognition accuracy and a fully deployed web application, the project delivers a working, real-world product while identifying a clear roadmap for continued improvement.
+
+---
+### Project Repository Link:  https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
 
 ![Report](/Report/Images/sign.jpg)
 
