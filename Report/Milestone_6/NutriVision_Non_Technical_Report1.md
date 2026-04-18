@@ -36,13 +36,13 @@ An AI model scans the image and draws precise outlines around every visible food
 The ₹10 coin (which has a fixed, known diameter of 2.7 cm) acts as a ruler. The system detects the coin in the photo and uses it to calculate the actual physical size of each food item in the image.
 
 **Step 3 — Identify what each food item is**
-A food recognition model examines each outlined food item and identifies which of the 80 supported Indian dishes it is — with a very high accuracy rate of nearly 98%.
+A food recognition model examines each outlined food item and identifies which of the 79 supported Indian dishes it is — with a very high accuracy rate of nearly 98%.
 
 **Step 4 — Estimate the weight of each item**
 Using the real-world dimensions calculated in Step 2, the system geometrically estimates the volume of each food item (for example, treating a bowl of curry like a cylinder) and then multiplies that by the known density of that specific food to arrive at an estimated weight in grams.
 
 **Step 5 — Calculate and display nutrition information**
-Using the identified food and its estimated weight, the system looks up the nutritional values from a database of 80 Indian dishes and presents a complete breakdown of calories, carbohydrates, protein, fat, sugar, fibre, sodium, calcium, iron, vitamin C, and folate.
+Using the identified food and its estimated weight, the system looks up the nutritional values from a database of 79 Indian dishes and presents a complete breakdown of calories, carbohydrates, protein, fat, sugar, fibre, sodium, calcium, iron, vitamin C, and folate.
 
 ---
 
