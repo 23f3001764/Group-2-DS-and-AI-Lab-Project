@@ -140,5 +140,7 @@ The team has identified several high-impact improvements for future development:
 NutriVision represents a substantial step forward in making nutrition tracking accessible and accurate for Indian cuisine. By combining state-of-the-art image segmentation, fine-tuned food classification, and practical geometric weight estimation, the system eliminates the manual effort that makes existing nutrition apps inconvenient to use. With a near-98% food recognition accuracy and a fully deployed web application, the project delivers a working, real-world product while identifying a clear roadmap for continued improvement.
 
 ---
+### Repository Link:  https://github.com/23f3001764/Group-2-DS-and-AI-Lab-Project.git
 
+![Report](/Report/Images/sign.jpg)
 
