@@ -63,9 +63,9 @@ The project underwent a significant evolution over its later milestones. The ear
 
 From Milestone 4 onwards, the team redesigned the pipeline from the ground up:
 
-- The food detection component was replaced with a more powerful segmentation model (SAM3) that produces precise pixel-level outlines rather than rough bounding boxes, handling overlapping dishes far more naturally.
-- Two dedicated food classification models — ConvNeXtV2-Tiny and EfficientNetV2-S — were trained specifically on Indian food images, achieving dramatically higher accuracy than the previous approach.
-- The weight estimation method was redesigned from a simple regression model (which required large amounts of labelled data and was sensitive to camera angle) to a geometry-based approach using coin calibration, which is practical, interpretable, and works without any specialist equipment.
+- The food detection component was replaced with a more powerful segmentation model **(SAM3)** that produces precise pixel-level outlines rather than rough bounding boxes, handling overlapping dishes far more naturally.
+- Two dedicated food classification models — **ConvNeXtV2-Tiny** and EfficientNetV2-S — were trained specifically on Indian food images, achieving dramatically higher accuracy than the previous approach.
+- The weight estimation method was redesigned from a simple regression model (which required large amounts of labelled data and was sensitive to camera angle) to a geometry-based approach using **coin calibration**, which is practical, interpretable, and works without any specialist equipment.
 - The application was built as a fully streaming web interface with live progress feedback, session management, and a polished user experience.
 
 ---
