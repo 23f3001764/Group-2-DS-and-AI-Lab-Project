@@ -23,23 +23,22 @@ import numpy as np
 
 matplotlib.use("Agg")
 import torch
-from langchain_core.exceptions import OutputParserException
-from langchain_core.messages import HumanMessage
-from langchain_core.output_parsers import PydanticOutputParser
-from langchain_openai import ChatOpenAI
-from matplotlib.backends.backend_agg import FigureCanvasAgg
-from matplotlib.figure import Figure
-from matplotlib.patches import Ellipse
-from PIL import Image
-from pydantic import BaseModel, Field
-from sklearn.decomposition import PCA as skPCA
-
 from config import (COIN_CONF_THRESH, COIN_DIAMETER_CM, CONF_THRESH,  # [FIX 1]
                     CONT_THRESH, CONVNEXT_CONF_THRESH, DENSITY_PATH,
                     IOU_THRESH, NUTRIENT_COLS, NUTRITION_PATH, OLLAMA_API_KEY,
                     OLLAMA_BASE_URL, OLLAMA_MODEL, PROMPT_1, PROMPT_2,
                     PROMPT_3, PROMPT_COIN)
+from langchain_core.exceptions import OutputParserException
+from langchain_core.messages import HumanMessage
+from langchain_core.output_parsers import PydanticOutputParser
+from langchain_ollama import ChatOllama
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+from matplotlib.figure import Figure
+from matplotlib.patches import Ellipse
 from models import get_classifier, get_device, get_sam
+from PIL import Image
+from pydantic import BaseModel, Field
+from sklearn.decomposition import PCA as skPCA
 
 # ════════════════════════════════════════════════════════════════════════════
 # Custom exception
@@ -68,15 +67,14 @@ with open(DENSITY_PATH) as _f:             # [FIX 1]
 
 
 def _get_density(food_class: str) -> tuple[float, str]:
-    """
-    Return (density_g_per_cm3, source_label) from the static JSON.
-    Falls back to 0.85 g/cm³ if the class is somehow missing.
-    """
-    entry = _DENSITY_DB.get(food_class.strip().lower())
-    if entry:
-        return float(entry["density_g_per_cm3"]), "food_density.json"
-    return 0.85, "default fallback (0.85)"
-
+    key = food_class.strip().lower()
+    entry = _DENSITY_DB.get(key)
+    if entry is None:
+        raise KeyError(
+            f"[density] '{key}' not found in food_density.json. "
+            f"Add it before running inference."
+        )
+    return float(entry["density_g_per_cm3"]), "food_density.json"
 
 # ════════════════════════════════════════════════════════════════════════════
 # Minimal Detections container
@@ -86,28 +84,21 @@ def _get_density(food_class: str) -> tuple[float, str]:
 # Image resize helper  (keeps uploaded photos from OOM-ing SAM3)
 # ════════════════════════════════════════════════════════════════════════════
 
-_SAM_MAX_DIM = 1024   # SAM3 native resolution — no quality loss above this
+_SAM_INPUT_SIZE = 1008   # standard square input for SAM3
 
 def _resize_for_sam(image_pil: Image.Image) -> Image.Image:
     """
-    Downscale image so its longest side is at most _SAM_MAX_DIM pixels.
-    Proportional resize; returns the original object unchanged if already small.
+    Resize every image to exactly 1008×1008 pixels — SAM3's standard
+    square input size — regardless of original dimensions or aspect ratio.
+    Small images are upscaled, large images are downscaled.
     """
-    w, h = image_pil.size
-    max_dim = max(w, h)
-    if max_dim <= _SAM_MAX_DIM:
+    if image_pil.size == (_SAM_INPUT_SIZE, _SAM_INPUT_SIZE):
         return image_pil
-    scale = _SAM_MAX_DIM / max_dim
-    new_w, new_h = int(w * scale), int(h * scale)
-    print(f"  [resize] {w}×{h} → {new_w}×{new_h} (scale {scale:.3f})")
-    return image_pil.resize((new_w, new_h), Image.LANCZOS)
-
-
-
-
-
-
-
+    print(f"  [resize] {image_pil.size} → {_SAM_INPUT_SIZE}×{_SAM_INPUT_SIZE}")
+    return image_pil.resize(
+        (_SAM_INPUT_SIZE, _SAM_INPUT_SIZE),
+        Image.LANCZOS,
+    )
 
 
 
@@ -297,14 +288,15 @@ def extract_coin_scale(coin_dets: Detections, img_np: np.ndarray,
         )
 
     _, (w_px, h_px), _, _ = pca_geometry(coin_mask)
-    major_px  = w_px
-    roundness = h_px / w_px if w_px > 0 else 0
+    major_px  = max(w_px, h_px)   # always the larger axis = true diameter
+    minor_px  = min(w_px, h_px)
+    roundness = minor_px / major_px if major_px > 0 else 0
 
     if roundness < 0.6:
         print(f"  WARNING: coin may be tilted (roundness={roundness:.2f}).")
 
     px_per_cm = major_px / COIN_DIAMETER_CM
-    print(f"  Coin  major={major_px:.1f}px  minor={h_px:.1f}px  "
+    print(f"  Coin  major={major_px:.1f}px  minor={minor_px:.1f}px  "
           f"roundness={roundness:.2f}  =>  {px_per_cm:.3f} px/cm")
 
     x1, y1, x2, y2 = map(int, coin_xyxy)
@@ -371,9 +363,11 @@ def _save_pca_image_for_llm(item: dict, pixels_per_cm: float,
     center, (width_px, height_px), angle_deg, comps = pca_geometry(crop_mask)
 
     # [FIX 7] Keep as float — meaningful decimal precision for the LLM prompt
-    width_cm  = round(width_px  / pixels_per_cm, 1)
-    height_cm = round(height_px / pixels_per_cm, 1)
-    print(f"  {item['food_class']:<24}  W={width_cm} cm  H={height_cm} cm")
+    # Sort: major_cm is always the larger dimension, minor_cm always the smaller
+    major_cm = float(f"{float(max(width_px, height_px)) / pixels_per_cm:.1f}")
+    minor_cm = float(f"{float(min(width_px, height_px)) / pixels_per_cm:.1f}")
+
+    print(f"  {item['food_class']:<24}  major={major_cm} cm  minor={minor_cm} cm")
 
     fig = Figure(figsize=(6, 6))
     FigureCanvasAgg(fig)
@@ -395,7 +389,7 @@ def _save_pca_image_for_llm(item: dict, pixels_per_cm: float,
         xy=(cx + pc1[0]*hw, cy + pc1[1]*hw),
         xytext=(cx - pc1[0]*hw, cy - pc1[1]*hw),
         arrowprops=dict(arrowstyle="<->", color="#ff4444", lw=2))
-    ax.text(cx + pc1[0]*hw + 4, cy + pc1[1]*hw - 8, f"W={width_cm} cm",
+    ax.text(cx + pc1[0]*hw + 4, cy + pc1[1]*hw - 8, f"W={major_cm} cm",
             color="#cc0000", fontsize=9, fontweight="bold",
             bbox=dict(facecolor="white", alpha=0.75, pad=2, edgecolor="none"))
 
@@ -404,15 +398,15 @@ def _save_pca_image_for_llm(item: dict, pixels_per_cm: float,
         xy=(cx + pc2[0]*hh, cy + pc2[1]*hh),
         xytext=(cx - pc2[0]*hh, cy - pc2[1]*hh),
         arrowprops=dict(arrowstyle="<->", color="#44ff88", lw=2))
-    ax.text(cx + pc2[0]*hh + 4, cy + pc2[1]*hh + 4, f"H={height_cm} cm",
+    ax.text(cx + pc2[0]*hh + 4, cy + pc2[1]*hh + 4, f"H={minor_cm} cm",
             color="#007733", fontsize=9, fontweight="bold",
             bbox=dict(facecolor="white", alpha=0.75, pad=2, edgecolor="none"))
 
     ax.plot(cx, cy, "o", color="white", markersize=6,
             markeredgecolor="#333", markeredgewidth=1.5)
     ax.set_title(
-        f"{item['food_class']}  conf={item['cls_conf']:.2f}   "
-        f"W={width_cm} cm  |  H={height_cm} cm", fontsize=10)
+    f"{item['food_class']}  conf={item['cls_conf']:.2f}   "
+    f"major={major_cm} cm  |  minor={minor_cm} cm", fontsize=10)
     ax.axis("off")
     fig.tight_layout()
 
@@ -424,8 +418,8 @@ def _save_pca_image_for_llm(item: dict, pixels_per_cm: float,
         "seg_idx":      seg_idx,
         "food_class":   item["food_class"],
         "cls_conf":     item["cls_conf"],
-        "width_cm":     width_cm,          # float now [FIX 7]
-        "height_cm":    height_cm,         # float now [FIX 7]
+        "major_cm":     major_cm,
+        "minor_cm":     minor_cm,         # float now [FIX 7]
         "pca_img_path": pca_path,
         "crop_img":     crop_img,
         "crop_mask":    crop_mask,
@@ -537,12 +531,12 @@ class WeightEstimate(BaseModel):
 
 _parser = PydanticOutputParser(pydantic_object=WeightEstimate)
 
-_llm = ChatOpenAI(
-    api_key=OLLAMA_API_KEY,
+_llm = ChatOllama(
     base_url=OLLAMA_BASE_URL,
     model=OLLAMA_MODEL,
     temperature=0,
     seed=42,
+    reasoning=True,
 )
 
 
@@ -550,44 +544,44 @@ def _img_b64(path: str) -> str:
     with open(path, "rb") as f:
         return base64.b64encode(f.read()).decode("utf-8")
 
-
 def estimate_weight(item: dict) -> WeightEstimate:
-    """
-    Look up density from static JSON, pass it as a hard fact to the LLM,
-    then overwrite density_g_per_cm3 after parse so the LLM cannot override it.
-    """
-    density_val, density_src = _get_density(item["food_class"])
+    density_val, density_src = _get_density(item["food_class"])  # ← unpack tuple
     b64 = _img_b64(item["pca_img_path"])
 
-    # [FIX 12] density_val is now explicitly included in the prompt as Step 3.
-    # Previously the field description said "copy it verbatim from Step 3" but
-    # Step 3 was never written into the prompt — the LLM always guessed freely.
     prompt = (
         f"You are a food portion weight estimation expert.\n\n"
         f"Food item: {item['food_class']}\n\n"
         f"Step 1 — Measured dimensions (from PCA + calibrated coin scale):\n"
-        f"  • Major axis width  (W): {item['width_cm']} cm\n"
-        f"  • Minor axis height (H): {item['height_cm']} cm\n\n"
+        f"  • Major axis (longer dimension): {item['major_cm']} cm\n"
+        f"  • Minor axis (shorter dimension): {item['minor_cm']} cm\n\n"
         f"Step 2 — Visual reference:\n"
         f"The attached image shows the segmented food item with its PCA ellipse overlay. "
-        f"The red arrow is the major axis (W) and the green arrow is the minor axis (H). "
-        f"Use the numeric dimensions above (not the image labels) as the authoritative "
-        f"measurements.\n\n"
-        # f"Step 3 — Density (authoritative, from food science database):\n"
-        # f"  • density_g_per_cm3 = {density_val:.3f}  ← copy this value verbatim into your output, do NOT change it.\n\n"
+        f"The red arrow is the major axis and the green arrow is the minor axis. "
+        f"Use the numeric dimensions above as the authoritative measurements.\n\n"
+        f"Step 3 — Density (authoritative, from food science database — do NOT change this):\n"
+        f"  • food_class        = {item['food_class']}\n"
+        f"  • density_g_per_cm3 = {density_val:.4f}  ← copy this verbatim into your output\n\n"
         f"Step 4 — Estimate the weight of this food portion.\n"
+        f"Decide yourself which axis represents length, width, or height based on "
+        f"the food's shape and the visual reference image.\n"
         f"Choose a realistic geometric model (hemisphere, cylinder, sphere, flat disc, etc.), "
-        f"compute volume from the given dimensions, then multiply by the density above.\n\n"
+        f"compute volume from the given dimensions, "
+        f"then multiply by the density value from Step 3 above.\n"
+        f"weight_g = volume_cm3 × {density_val:.4f}\n\n"
         f"{_parser.get_format_instructions()}"
     )
 
     msg = HumanMessage(content=[
         {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}},
-        {"type": "text",      "text": prompt},
+        {"type": "text", "text": prompt},
     ])
 
-    # [FIX 9] Catch parse failures — one bad item must not kill the whole pipeline
     try:
+        raw_response = _llm.invoke(
+            [msg],
+        )
+        result = _parser.invoke(raw_response)
+    except TypeError:
         raw_response = _llm.invoke([msg])
         result = _parser.invoke(raw_response)
     except (OutputParserException, Exception) as exc:
@@ -597,44 +591,33 @@ def estimate_weight(item: dict) -> WeightEstimate:
             geometry="unknown (parse error)",
             density_g_per_cm3=density_val,
             reasoning=f"Defaulted to 100 g — LLM parse error: {str(exc)[:120]}",
-            density_source=density_src,
+            density_source=density_src,   # ← now always defined
         )
         return result
 
-    # [FIX 3] Hard-enforce the looked-up density — LLM output is overwritten
-    result.density_g_per_cm3 = density_val
-    result.density_source = density_src   # [FIX 2] field now exists on the model
-
+    result.density_g_per_cm3 = density_val   # hard-enforce
+    result.density_source = density_src       # ← now always defined
     return result
-
 
 # ════════════════════════════════════════════════════════════════════════════
 # Nutrition scaling
 # ════════════════════════════════════════════════════════════════════════════
 
-def _fuzzy_lookup(food_class: str) -> dict | None:
-    key  = food_class.strip().lower()
-    if key in NUTRITION_DB:
-        return NUTRITION_DB[key]
-    norm = re.sub(r"[^a-z0-9 ]", "", key)
-    for db_key, entry in NUTRITION_DB.items():
-        db_norm = re.sub(r"[^a-z0-9 ]", "", db_key)
-        if db_norm in norm or norm in db_norm:
-            return entry
-    return None
-
 
 def scale_nutrition(food_class: str, weight_g: float) -> dict | None:
-    entry = _fuzzy_lookup(food_class)
+    key = food_class.strip().lower()
+    entry = NUTRITION_DB.get(key)
     if entry is None:
-        return None
+        raise KeyError(
+            f"[nutrition] '{key}' not found in food_nutrition.json. "
+            f"Add it before running inference."
+        )
     factor = weight_g / 100.0
     scaled = {"food_class": food_class, "weight_g": round(weight_g, 1)}
     for col in NUTRIENT_COLS:
         raw_val = entry.get(col)
         scaled[col] = round(raw_val * factor, 2) if raw_val is not None else None
     return scaled
-
 
 # ════════════════════════════════════════════════════════════════════════════
 # Shared classification + geometry helper
@@ -691,8 +674,8 @@ def _llm_and_nutrition(pca_data, convnext_results, save_dir):
             "seg_idx":        item["seg_idx"],
             "food_class":     item["food_class"],
             "cls_conf":       item["cls_conf"],
-            "width_cm":       item["width_cm"],
-            "height_cm":      item["height_cm"],
+            "major_cm":       item["major_cm"],
+            "minor_cm":       item["minor_cm"],
             "weight_g":       est.weight_g,
             "geometry":       est.geometry,
             "density":        est.density_g_per_cm3,

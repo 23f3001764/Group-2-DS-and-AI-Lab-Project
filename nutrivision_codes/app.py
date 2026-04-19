@@ -11,9 +11,8 @@ import time
 
 import gradio as gr
 import pandas as pd
-from PIL import Image
-
 from config import NUTRIENT_COLS, NUTRIENT_LABELS
+from PIL import Image
 from pipeline import N_STEPS, run_pipeline_steps
 
 # ── Example images ─────────────────────────────────────────────────────────
@@ -411,6 +410,7 @@ def process_image(image, session_dir: str | None):
                     reasoning_parts.append(
                         f"### {r['food_class']}  _(conf {r['cls_conf']:.0%})_\n"
                         f"- **Weight:** {r['weight_g']:.0f} g\n"
+                        f"- **Dimensions:** major={r.get('major_cm', '?')} cm  ·  minor={r.get('minor_cm', '?')} cm\n"
                         f"- **Geometry:** {r['geometry']}\n"
                         f"- **Density:** {r['density']:.3f} g/cm³  "
                         f"{density_icon} _{density_src}_\n"
@@ -439,9 +439,12 @@ DESCRIPTION = """
 
 Upload a plate photo **with a ₹10 coin** as a size reference, or use your camera.
 
+Best result with 2 major axis clearly visible 
+
 **Pipeline:** SAM3 segmentation → ConvNeXtV2 classification → PCA geometry → LLM weight estimation → Nutrition lookup
 
 > The ₹10 coin must be clearly visible and lying flat for accurate size calibration.
+See the Pipeline Progress Below after Analyze button pressed
 """
 
 with gr.Blocks(title="Food Nutrition Estimator", theme=gr.themes.Soft()) as demo:
@@ -512,6 +515,7 @@ if __name__ == "__main__":
     demo.queue()
     demo.launch(
         server_name="0.0.0.0",
-        server_port=7860,
+        server_port=7868,
         share=True,
     )
+# 7680

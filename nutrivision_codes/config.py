@@ -4,14 +4,14 @@ import os
 # Place your model checkpoint and nutrition JSON in the same folder as app.py
 # or set these env vars before running.
 CKPT_PATH = (
-    "/teamspace/studios/this_studio/nutrivision_codes/files_models/best_convnextv2_tiny.pt"
+    "/teamspace/studios/this_studio/nutrivision/files_models/best_convnextv2_tiny.pt"
 )
 NUTRITION_PATH = (
-    "/teamspace/studios/this_studio/nutrivision_codes/files_models/food_nutrition.json"
+    "/teamspace/studios/this_studio/nutrivision/files_models/food_nutrition.json"
 )
-SAVE_DIR = "/teamspace/studios/this_studio/nutrivision_codes/SAVE_DIR"
+SAVE_DIR = "/teamspace/studios/this_studio/nutrivision/SAVE_DIR"
 DENSITY_PATH = (
-    "/teamspace/studios/this_studio/nutrivision_codes/files_models/food_density.json"
+    "/teamspace/studios/this_studio/nutrivision/files_models/food_density.json"
 )
 
 
@@ -34,7 +34,12 @@ COIN_CONF_THRESH = 0.50
 
 # ── LLM (Ollama Cloud via OpenAI-compatible endpoint) ─────────────────────
 OLLAMA_API_KEY = os.environ.get("OLLAMA", "")
-OLLAMA_BASE_URL = "https://ollama.com/v1"
+
+# Add this line ↓
+if OLLAMA_API_KEY:
+    os.environ["OLLAMA_API_KEY"] = OLLAMA_API_KEY  # langchain reads this automatically
+
+OLLAMA_BASE_URL = "https://ollama.com"
 OLLAMA_MODEL = "qwen3.5:397b-cloud"
 
 

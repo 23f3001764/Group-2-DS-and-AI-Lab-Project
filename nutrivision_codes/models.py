@@ -9,9 +9,8 @@ import albumentations as A
 import timm
 import torch
 from albumentations.pytorch import ToTensorV2
-from transformers import Sam3Model, Sam3Processor
-
 from config import CKPT_PATH
+from transformers import Sam3Model, Sam3Processor
 
 # ── Globals (populated on first use) ──────────────────────────────────────
 _device = None
