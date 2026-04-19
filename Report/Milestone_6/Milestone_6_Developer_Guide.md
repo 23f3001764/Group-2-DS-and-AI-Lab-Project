@@ -209,18 +209,27 @@ Artifacts generated in `/content/outputs`:
 ###  Notebook Reference
 [Model Evaluation Notebook](../../Notebooks/Model%20evaluation)
 
+### 📋 Prerequisites
+
+Upload the following files to `/content/` before running:
+
+- `class_to_idx.json`
+- `efficientnetv2_best.pth`
+- `convnextv2_best.pth`
+
 ###  Steps to Reproduce
 
 1. Open the notebook in **Google Colab**
 2. Set runtime to **GPU (recommended)**
-3. Run all cells sequentially:
+3. Upload required files (`.pth`, `.json`)
+4. Run all cells sequentially:
    - Install dependencies
    - Download dataset & checkpoints
    - Prepare test dataset
    - Load trained models
    - Run inference
    - Compute metrics & generate plots
-4. Check outputs saved in the working directory
+5. Check outputs saved in the working directory
 
 ###  Key Steps Covered in Notebook
 
@@ -246,40 +255,52 @@ The notebook performs the following:
   - ConvNeXtV2-Tiny  
   - Ensemble (average)
 
-- Image size: **224 × 224**
+Image size:
+- EfficientNetV2-S → 300 × 300  
+- ConvNeXtV2-Tiny → 176 × 176
 - Batch size: **32**
-- Test split: **20% (stratified)**
+Data split:
+- Train: 80%  
+- Validation: 10%  
+- Test: 10%  
+- Seed: 42 (deterministic)
 
 ### Expected Outputs
 
-- `eval_results.csv`
-- `metric_comparison.png`
-- `cm_efficientnetv2.png`
-- `cm_convnextv2.png`
-- `roc_curves.png`
-- `pr_curves.png`
-- `per_class_f1.png`
-- `confidence_distribution.png`
-- `calibration.png`
-- `model_agreement.png`
-- `failures_eff.png`
-- `gradcam_eff.png` (optional)
+- eval_results.csv  
+- metric_comparison.png  
+- cm_efficientnetv2.png  
+- cm_convnextv2.png  
+- roc_curves.png  
+- pr_curves.png  
+- per_class_f1.png  
+- confidence_distribution.png  
+- calibration.png  
+- model_agreement.png  
+- qualitative_correct_eff.png  
+- qualitative_correct_cnx.png  
+- failures_eff.png  
+- failures_cnx.png  
+- gradcam_eff.png  
+- gradcam_cnx.png  
+- classification_report_eff.txt  
+- classification_report_cnx.txt  
 
 ### Expected Performance
 
-| Model                 | Top-1 | Top-5 | F1    | ROC-AUC | mAP   |
-|----------------------|------|------|------|--------|------|
-| EfficientNetV2-S     | ~0.36 | ~0.59 | ~0.33 | ~0.89 | ~0.38 |
-| ConvNeXtV2-Tiny      | ~0.01 | ~0.05 | ~0.002 | ~0.50 | ~0.01 |
-| Ensemble             | ~0.36 | ~0.58 | ~0.33 | ~0.86 | ~0.37 |
+| Model               | Top-1 | Top-5 | F1    | mAP   |
+|--------------------|------|------|------|------|
+| EfficientNetV2-S   | ~0.93 | ~0.99 | ~0.90 | ~0.94 |
+| ConvNeXtV2-Tiny    | ~0.98 | ~0.99 | ~0.97 | ~0.98 |
+| Ensemble           | ~0.98 | ~0.99 | ~0.97 | ~0.98 |
 
 ### Key Observations
 
-- EfficientNetV2 significantly outperforms ConvNeXtV2  
-- ConvNeXtV2 shows poor generalization (likely training mismatch)  
-- Ensemble does not significantly improve results  
-- Strong class confusion observed in visually similar categories  
-- Fine-grained classification remains challenging  
+- Both models achieve strong performance (>92% Top-1 accuracy)  
+- ConvNeXtV2-Tiny slightly outperforms EfficientNetV2-S  
+- Ensemble provides marginal improvement over individual models  
+- Proper preprocessing and correct evaluation setup significantly improved results  
+- Earlier poor performance was due to evaluation bugs, not model weakness  
 
 ---
 
