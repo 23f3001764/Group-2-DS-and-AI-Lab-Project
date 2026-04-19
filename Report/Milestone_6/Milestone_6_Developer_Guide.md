@@ -72,17 +72,17 @@ This section explains how to **manually reproduce the Exploratory Data Analysis 
 5. Verify outputs (counts, plots, sample images)
 
 Key steps present in the notebook:
-Step 1: Mount Google Drive 
-Step 2: Set Dataset Path
-Step 3: Verify Dataset Structure
-Step 4: Count Images per Category
-Step 5: Visualize Class Distribution
-Step 6: Display Sample Images
-Step 7: Analyze Image Dimensions
-Step 8: Plot Dimension Distribution
-Step 9: Check Image Modes
-Step 10: Aspect Ratio Analysis
-Step 11: Corrupted Image Check
+- Step 1: Mount Google Drive 
+- Step 2: Set Dataset Path
+- Step 3: Verify Dataset Structure
+- Step 4: Count Images per Category
+- Step 5: Visualize Class Distribution
+- Step 6: Display Sample Images
+- Step 7: Analyze Image Dimensions
+- Step 8: Plot Dimension Distribution
+- Step 9: Check Image Modes
+- Step 10: Aspect Ratio Analysis
+- Step 11: Corrupted Image Check
 
 ### Important Configurations
 
@@ -265,7 +265,7 @@ The notebook performs the following:
 - `failures_eff.png`
 - `gradcam_eff.png` (optional)
 
-### 📈 Expected Performance
+### Expected Performance
 
 | Model                 | Top-1 | Top-5 | F1    | ROC-AUC | mAP   |
 |----------------------|------|------|------|--------|------|
