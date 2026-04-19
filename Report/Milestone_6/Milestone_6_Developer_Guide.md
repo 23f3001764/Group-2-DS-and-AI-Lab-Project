@@ -61,7 +61,7 @@ This section explains how to **reproduce the Exploratory Data Analysis (EDA)** f
 This section explains how to **manually reproduce the Exploratory Data Analysis (EDA)** for the dataset using a Colab notebook.
 
 ### Notebook Reference
-[EDA Notebook](../../notebooks/EDA/Khana_Dataset_EDA.ipynb)
+[EDA Notebook](../../notebooks/EDA/)
 
 ### Steps to Reproduce
 
@@ -107,10 +107,12 @@ Step 11: Corrupted Image Check
 - Images are **uniform and square**
 - Minimal preprocessing required
 
+---
+
 ## **Model Training**
 
 ### Notebook Reference
-[Model Notebook](../../notebooks/Model Training/ConvNeXtV2 (1).ipynb)
+[Model Training Notebook](../../notebooks/Model%20Training/)
 ### Steps to Reproduce
 
 1. Open the notebook in Google Colab  
@@ -200,10 +202,12 @@ Artifacts generated in `/content/outputs`:
 - Class imbalance handled effectively via sampling  
 - Pipeline is optimized for **Colab GPU environments**
 
+---
+
 ##  **Model Evaluation**
 
 ###  Notebook Reference
-[Model eval Notebook](../../notebooks/Model%20evaluation/Model_Pipeline_Evaluation.ipynb)
+[Model Evaluation Notebook](../../notebooks/Model%20evaluation)
 
 ###  Steps to Reproduce
 
@@ -277,10 +281,12 @@ The notebook performs the following:
 - Strong class confusion observed in visually similar categories  
 - Fine-grained classification remains challenging  
 
+---
+
 ##  Food Weight Estimation Pipeline
 
 ###  Notebook Reference
-[weight_pca Notebook](../../notebooks/Weight_PCA/Weight_PCA_Pipeline.ipynb)
+[Weight Estimation Notebook](../../notebooks/Weight_PCA/)
 
 ###  Steps to Reproduce
 
@@ -404,6 +410,10 @@ For each detected food item:
 - Poor lighting or occlusion may affect segmentation  
 - PCA assumes roughly elliptical shapes  
 - Height estimation is approximate (not exact)   
+
+---
+With segmentation, classification, and geometric estimation in place, the complete pipeline is ready to be integrated into an application.
+We can proceed to deployment to run the full system end-to-end with user input.
 
 ## **Deployment**
 
