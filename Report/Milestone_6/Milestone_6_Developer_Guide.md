@@ -54,14 +54,14 @@ Final Output (Calories, Nutrition Info)
 This section explains how to **reproduce the Exploratory Data Analysis (EDA)** for the dataset using a Colab notebook.
 
 ### Dataset Overview
--Total categories: 80 food classes
--Total images: 131,819
--This is a multi-class image classification problem with a large dataset. The dataset can be sourced from the following link: https://khana.omkarprabhu.in/
+- Total categories: 80 food classes
+- Total images: 131,819
+- This is a multi-class image classification problem with a large dataset. The dataset can be sourced from the following link: https://khana.omkarprabhu.in/
 
 This section explains how to **manually reproduce the Exploratory Data Analysis (EDA)** for the dataset using a Colab notebook.
 
 ### Notebook Reference
-`Group-2-DS-and-AI-Lab-Project/notebooks/EDA/eda_khana.ipynb`
+➡️ [EDA Notebook](../../notebooks/EDA/Khana_Dataset_EDA.ipynb)
 
 ### Steps to Reproduce
 
@@ -110,7 +110,7 @@ Step 11: Corrupted Image Check
 ## **Model Training**
 
 ### Notebook Reference
- `notebooks/model_training_khana.ipynb`
+➡️ [Model Notebook](../../notebooks/Model Training/ConvNeXtV2 (1).ipynb)
 
 ### Steps to Reproduce
 
@@ -201,11 +201,210 @@ Artifacts generated in `/content/outputs`:
 - Class imbalance handled effectively via sampling  
 - Pipeline is optimized for **Colab GPU environments**
 
-## **Model evaluation**
+##  **Model Evaluation**
 
+###  Notebook Reference
+➡️ [Model eval Notebook](../../notebooks/Model evaluation/Model_Pipeline_Evaluation.ipynb)
 
-## **Weight Estimation**
+###  Steps to Reproduce
 
+1. Open the notebook in **Google Colab**
+2. Set runtime to **GPU (recommended)**
+3. Run all cells sequentially:
+   - Install dependencies
+   - Download dataset & checkpoints
+   - Prepare test dataset
+   - Load trained models
+   - Run inference
+   - Compute metrics & generate plots
+4. Check outputs saved in the working directory
+
+###  Key Steps Covered in Notebook
+
+The notebook performs the following:
+
+1. Environment Setup
+2. Dataset Preparation
+3. Data Splitting
+4. Data Loading
+5. Model Loading
+6. Inference 
+7. Metric Computation
+8. Model Comparison
+10. Visualization
+11. Error Analysis
+12. Qualitative Analysis
+13. Model Explainability (Optional)
+
+### Important Configurations
+
+- Models:
+  - EfficientNetV2-S  
+  - ConvNeXtV2-Tiny  
+  - Ensemble (average)
+
+- Image size: **224 × 224**
+- Batch size: **32**
+- Test split: **20% (stratified)**
+
+### Expected Outputs
+
+- `eval_results.csv`
+- `metric_comparison.png`
+- `cm_efficientnetv2.png`
+- `cm_convnextv2.png`
+- `roc_curves.png`
+- `pr_curves.png`
+- `per_class_f1.png`
+- `confidence_distribution.png`
+- `calibration.png`
+- `model_agreement.png`
+- `failures_eff.png`
+- `gradcam_eff.png` (optional)
+
+### 📈 Expected Performance
+
+| Model                 | Top-1 | Top-5 | F1    | ROC-AUC | mAP   |
+|----------------------|------|------|------|--------|------|
+| EfficientNetV2-S     | ~0.36 | ~0.59 | ~0.33 | ~0.89 | ~0.38 |
+| ConvNeXtV2-Tiny      | ~0.01 | ~0.05 | ~0.002 | ~0.50 | ~0.01 |
+| Ensemble             | ~0.36 | ~0.58 | ~0.33 | ~0.86 | ~0.37 |
+
+### Key Observations
+
+- EfficientNetV2 significantly outperforms ConvNeXtV2  
+- ConvNeXtV2 shows poor generalization (likely training mismatch)  
+- Ensemble does not significantly improve results  
+- Strong class confusion observed in visually similar categories  
+- Fine-grained classification remains challenging  
+
+##  Food Weight Estimation Pipeline
+
+###  Notebook Reference
+➡️ [weight_pca Notebook](../../notebooks/Weight_PCA/Weight_PCA_Pipeline.ipynb)
+
+###  Steps to Reproduce
+
+1. Open the notebook in **Google Colab**
+2. Set runtime to **GPU**
+3. Mount Google Drive (for model weights)
+4. Upload / set input image:
+   - Ensure a **₹10 coin (2.7 cm diameter)** is visible in the image
+5. Run all cells sequentially:
+   - Install dependencies (SAM3, Albumentations, etc.)
+   - Load SAM3 segmentation model
+   - Detect food + coin regions
+   - Compute pixel-to-cm scale using coin
+   - Classify food using ConvNeXtV2
+   - Apply PCA on segmented masks
+   - Estimate geometric dimensions
+6. Check outputs in `/content/pipeline_out`
+
+### Key Steps Covered in Notebook
+
+The pipeline performs:
+
+1. **Environment Setup**
+   - Install SAM3 and required dependencies
+   - Configure GPU optimizations
+
+2. **Segmentation (SAM3)**
+   - Segment:
+     - Food items  
+     - Containers (bowls/plates)  
+     - Coin (for scale reference)
+   - Use multiple prompts for robust detection
+
+3. **Detection Merging**
+   - Combine multiple SAM outputs  
+   - Remove overlapping/duplicate masks  
+   - Filter food inside containers  
+
+4. **Scale Estimation (Coin-Based)**
+   - Detect ₹10 coin  
+   - Apply PCA on coin mask  
+   - Compute:
+     - Pixels per cm  
+   - Formula:
+     ```
+     pixels_per_cm = coin_diameter_pixels / 2.7
+     ```
+
+5. **Food Classification**
+   - Use **ConvNeXtV2 Tiny**
+   - Classify each segmented food region  
+   - Filter low-confidence predictions  
+
+6. **PCA Geometry Extraction**
+   - Apply PCA on food mask pixels  
+   - Compute:
+     - Major axis → diameter  
+     - Minor axis → width  
+     - Orientation angle  
+
+7. **Height Estimation**
+   - Approximate using bounding box  
+   - Apply empirical scaling factor  
+
+8. **3D Shape Approximation**
+   - Model food as **paraboloid-like shape**  
+   - Estimate:
+     - Radius  
+     - Height  
+     - Volume proxy  
+
+9. **Visualization**
+   - Segmentation overlays  
+   - PCA ellipse + axes  
+   - Coin scaling visualization  
+   - Shape approximation plots  
+
+### Important Configurations
+
+- Coin diameter: **2.7 cm (₹10 coin)**
+- SAM3 confidence threshold: `0.6`
+- IoU threshold (merge): `0.4`
+- Containment threshold: `0.25`
+
+- ConvNeXtV2:
+  - Confidence threshold: `0.8`
+
+- YOLO (if used):
+  - Confidence threshold: `0.35`
+
+- Fallback scale:
+  - `18 px/cm` (if coin not detected)
+
+### Expected Outputs
+
+Generated in `/content/pipeline_out`:
+
+- `overview.png` (segmentation result)
+- `coin_scale.png` (scale estimation)
+- `pca_*.png` (per-food PCA visualization)
+
+For each detected food item:
+- Predicted class  
+- Diameter (cm)  
+- Width (cm)  
+- Height (cm)  
+- PCA orientation  
+
+### Expected Behavior
+
+- Accurate segmentation of food items  
+- Reliable scale estimation using coin  
+- Correct classification for common food items  
+- Reasonable geometric approximation of food shape  
+
+### Important Notes
+
+- Coin must be:
+  - Fully visible  
+  - Flat (not tilted)  
+- Poor lighting or occlusion may affect segmentation  
+- PCA assumes roughly elliptical shapes  
+- Height estimation is approximate (not exact)   
 
 ## **Deployment**
 
