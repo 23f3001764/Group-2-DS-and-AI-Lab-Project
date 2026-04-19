@@ -49,8 +49,165 @@ Nutrition Mapping (JSON files)
         ▼
 Final Output (Calories, Nutrition Info)
 ```
+## **Exploratory Data Analysis (EDA)**
 
-## **Getting started**
+This section explains how to **reproduce the Exploratory Data Analysis (EDA)** for the dataset using a Colab notebook.
+
+### Dataset Overview
+-Total categories: 80 food classes
+-Total images: 131,819
+-This is a multi-class image classification problem with a large dataset. The dataset can be sourced from the following link: https://khana.omkarprabhu.in/
+
+This section explains how to **manually reproduce the Exploratory Data Analysis (EDA)** for the dataset using a Colab notebook.
+
+### Notebook Reference
+`Group-2-DS-and-AI-Lab-Project/notebooks/EDA/eda_khana.ipynb`
+
+### Steps to Reproduce
+
+1. Open the notebook in Jupyter/Google Colab  
+2. (Colab only) Mount Google Drive  
+3. Set dataset path correctly (`/content/dataset/khana`)  
+4. Run all cells sequentially  
+5. Verify outputs (counts, plots, sample images)
+
+Key steps present in the notebook:
+Step 1: Mount Google Drive 
+Step 2: Set Dataset Path
+Step 3: Verify Dataset Structure
+Step 4: Count Images per Category
+Step 5: Visualize Class Distribution
+Step 6: Display Sample Images
+Step 7: Analyze Image Dimensions
+Step 8: Plot Dimension Distribution
+Step 9: Check Image Modes
+Step 10: Aspect Ratio Analysis
+Step 11: Corrupted Image Check
+
+### Important Configurations
+
+- Dataset format: folder-based (each folder = class)
+- Total classes: ~80
+- Total images: ~131k
+- Image format: mostly RGB
+- Image size: ~500×500 (uniform)
+- No corrupted images detected
+
+### Expected Outputs
+
+- Class distribution plot (`dataset_distribution.png`)
+- Sample images visualization
+- Image size statistics (width, height)
+- Aspect ratio analysis (≈ 1.0)
+- Image mode distribution (RGB dominant)
+
+### Key Observations
+
+- Dataset is **highly imbalanced**
+- Images are **uniform and square**
+- Minimal preprocessing required
+
+## **Model Training**
+
+### Notebook Reference
+ `notebooks/model_training_khana.ipynb`
+
+### Steps to Reproduce
+
+1. Open the notebook in Google Colab  
+2. Set runtime to **GPU (T4 / L4 / A100)**  
+3. Mount Google Drive (for checkpoint saving)  
+4. Run all cells sequentially:
+   - Dataset download & extraction  
+   - File scanning & label mapping  
+   - Train/Val/Test split  
+   - DataLoader setup  
+   - Model training  
+5. Monitor training logs per epoch  
+6. After training, check outputs in `/content/outputs`
+
+Key steps present in the notebook:
+1. Mount Drive & Install
+2. Imports
+3. Configuration
+4. Download Dataset
+5. Load Checkpoint
+6. File Scan
+7. Splits & Sampler
+8. Transforms & Dataset
+9. Model
+10. Optimizer / Scheduler / Loss
+11. Metrics
+12. Resume Training ← **main loop with Drive backup**
+13. Training Curves
+14. Test Evaluation
+15. Per-Class Report
+16. Confusion Matrix
+17. Sample Predictions
+18. Artifacts & Cleanup
+
+### Important Configurations
+
+- Model: **ConvNeXtV2 Tiny (pretrained)**
+- Image size: **176 × 176** (optimized for speed)
+- Batch size: **128 (T4 GPU)**
+- Epochs: **5 (resume supported)**
+
+- Class imbalance handled using:
+  - `WeightedRandomSampler`
+
+- Optimizer:
+  - AdamW  
+  - Backbone LR: `1e-4`  
+  - Head LR: `1e-3`
+
+- Loss:
+  - CrossEntropy with Label Smoothing (0.1)
+
+- Scheduler:
+  - Warmup + Cosine decay
+
+- Performance optimizations:
+  - Mixed Precision (AMP)
+  - `cudnn.benchmark = True`
+  - `torch.compile()` (if available)
+
+- Checkpointing:
+  - Saved locally + auto backup to Google Drive
+
+### Expected Outputs
+
+Artifacts generated in `/content/outputs`:
+
+- `best_convnextv2_tiny.pt` (trained model)
+- `training_history.csv`
+- `training_curves.png`
+- `dataset_distribution.png`
+- `confusion_matrix.png`
+- `classification_report.txt`
+- `sample_predictions.png`
+
+### Expected Performance
+
+- Best Validation F1: **~0.92**
+- Test Top-1 Accuracy: **~94–95%**
+- Test Top-5 Accuracy: **~99%+**
+- Test Macro F1: **~0.92–0.93**
+
+### Key Notes
+
+- Training supports **resume from checkpoint**  
+- Model automatically saves **best performing weights**  
+- Class imbalance handled effectively via sampling  
+- Pipeline is optimized for **Colab GPU environments**
+
+## **Model evaluation**
+
+
+## **Weight Estimation**
+
+
+## **Deployment**
 
 ### 1. Prerequisites
 Ensure the following before setup:
