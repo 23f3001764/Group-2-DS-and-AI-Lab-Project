@@ -61,7 +61,7 @@ This section explains how to **reproduce the Exploratory Data Analysis (EDA)** f
 This section explains how to **manually reproduce the Exploratory Data Analysis (EDA)** for the dataset using a Colab notebook.
 
 ### Notebook Reference
-[EDA Notebook](../../notebooks/EDA/)
+[EDA Notebook](../../Notebooks/EDA/)
 
 ### Steps to Reproduce
 
@@ -112,7 +112,7 @@ Step 11: Corrupted Image Check
 ## **Model Training**
 
 ### Notebook Reference
-[Model Training Notebook](../../notebooks/Model%20Training/)
+[Model Training Notebook](../../Notebooks/Model%20Training/)
 ### Steps to Reproduce
 
 1. Open the notebook in Google Colab  
@@ -207,7 +207,7 @@ Artifacts generated in `/content/outputs`:
 ##  **Model Evaluation**
 
 ###  Notebook Reference
-[Model Evaluation Notebook](../../notebooks/Model%20evaluation)
+[Model Evaluation Notebook](../../Notebooks/Model%20evaluation)
 
 ###  Steps to Reproduce
 
@@ -286,7 +286,7 @@ The notebook performs the following:
 ##  Food Weight Estimation Pipeline
 
 ###  Notebook Reference
-[Weight Estimation Notebook](../../notebooks/Weight_PCA/)
+[Weight Estimation Notebook](../../Notebooks/Weight_PCA/)
 
 ###  Steps to Reproduce
 
