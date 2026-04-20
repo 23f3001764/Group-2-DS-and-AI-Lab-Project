@@ -238,8 +238,7 @@ Nutrivision
 ---
 
 ## Configuration
-
-```import os
+import os
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 # Place your model checkpoint and nutrition JSON in the same folder as app.py
@@ -275,7 +274,12 @@ COIN_CONF_THRESH = 0.50
 
 # ── LLM (Ollama Cloud via OpenAI-compatible endpoint) ─────────────────────
 OLLAMA_API_KEY = os.environ.get("OLLAMA", "")
-OLLAMA_BASE_URL = "https://ollama.com/v1"
+
+# Add this line ↓
+if OLLAMA_API_KEY:
+    os.environ["OLLAMA_API_KEY"] = OLLAMA_API_KEY  # langchain reads this automatically
+
+OLLAMA_BASE_URL = "https://ollama.com"
 OLLAMA_MODEL = "qwen3.5:397b-cloud"
 
 
@@ -285,7 +289,6 @@ PROMPT_2 = "drink and its glass"
 PROMPT_3 = "food"
 PROMPT_COIN = "coin"
 
-```
 
 ---
 
