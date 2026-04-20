@@ -238,6 +238,7 @@ Nutrivision
 ---
 
 ## Configuration
+```
 import os
 
 ── Paths ──────────────────────────────────────────────────────────────────
@@ -288,7 +289,7 @@ PROMPT_1 = "food and its bowl"
 PROMPT_2 = "drink and its glass"
 PROMPT_3 = "food"
 PROMPT_COIN = "coin"
-
+```
 
 ---
 
