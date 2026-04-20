@@ -8,8 +8,8 @@ NutriVision is an end-to-end AI system that accepts a photograph of a meal — i
 
 | Instance | URL |
 |---|---|
-| **Primary** (more credits) | https://7860-01kp8gvr84ng3myeemyw7vzz46.cloudspaces.litng.ai |
-| **Mirror** | https://7860-01knjbx5j5gnvmttvxykcmx4bh.cloudspaces.litng.ai/ |
+| **Primary** (more credits) | https://7868-01kpaaw75y1amk0fgq7x97120z.cloudspaces.litng.ai/ |
+| **Old** | https://7860-01kp8gvr84ng3myeemyw7vzz46.cloudspaces.litng.ai |
 
 Both URLs serve the identical Gradio application running on Lightning AI with GPU acceleration.
 
