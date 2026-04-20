@@ -88,7 +88,7 @@ When tested on actual food photos with a ₹10 coin placed in frame:
 
 | Photo | What the System Detected | Estimated Weight | Estimated Calories |
 |---|---|---|---|
-| Moong dal halwa in bowl | Moong dal halwa ✅ | 100 g | 350 kcal |
+| Moong dal halwa in bowl | Moong dal halwa ⚠️ (misclassified) | 100 g | 350 kcal |
 | Steamed momos (stock photo) | Steamed momo ✅ | 37 g | 52 kcal |
 | Biryani in steel bowl | Chivda ⚠️ (misclassified) | 25 g | 28 kcal |
 | Samosa on foil | Garlic bread ⚠️ (misclassified) | 6 g | 23 kcal |
