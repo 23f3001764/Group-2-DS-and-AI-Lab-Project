@@ -12,6 +12,10 @@ Key design rules
   LLM parse — the model only does geometry, not density.
 
 """
+# At the very top of pipeline.py, before any imports
+import os
+
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 import base64
 import json
@@ -137,6 +141,9 @@ def _results_to_dets(results) -> Detections:
     return Detections(boxes, scores, masks)
 
 
+import gc  # add at top of file alongside other imports
+
+
 def get_dets(image: Image.Image, prompt: str,
              conf_thresh: float = CONF_THRESH) -> Detections:
     """Run SAM3 with a text prompt on a PIL image."""
@@ -145,21 +152,24 @@ def get_dets(image: Image.Image, prompt: str,
     inputs = sam_processor(
         images=image, text=prompt, return_tensors="pt"
     ).to(device)
-    with torch.no_grad():
+    with torch.inference_mode():          # slightly leaner than no_grad
         outputs = sam_model(**inputs)
-    # [FIX 13] Use direct key access — .get() silently returns None on a miss,
-    # which causes .tolist() to raise AttributeError with no useful traceback.
     results = sam_processor.post_process_instance_segmentation(
         outputs,
         threshold=0.0,
         mask_threshold=0.5,
         target_sizes=inputs["original_sizes"].tolist()
     )[0]
+    # Explicitly drop GPU tensors before the next SAM pass
+    del inputs, outputs
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    gc.collect()
+
     dets = _results_to_dets(results)
     if len(dets) == 0:
         return dets
     return dets.filter(dets.confidence >= conf_thresh)
-
 
 def _mask_iou(m1, m2):
     inter = np.logical_and(m1, m2).sum()
@@ -726,7 +736,8 @@ def run_pipeline_steps(image_pil: Image.Image, save_dir: str):
     # Resize large uploads to SAM3's native resolution before any GPU work.
     # Phone photos (3000–4000px+) OOM on 4× sequential SAM passes; test images
     # are already small. This is the primary cause of CUDA OOM for uploads.
-    sam_image = _resize_for_sam(image_pil)
+    sam_image = image_pil
+
     img_np = np.array(sam_image.convert("RGB"))
 
     det1 = get_dets(sam_image, PROMPT_1)

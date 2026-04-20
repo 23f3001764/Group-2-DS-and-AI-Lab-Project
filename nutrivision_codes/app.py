@@ -411,6 +411,7 @@ def process_image(image, session_dir: str | None):
                         f"### {r['food_class']}  _(conf {r['cls_conf']:.0%})_\n"
                         f"- **Weight:** {r['weight_g']:.0f} g\n"
                         f"- **Dimensions:** major={r.get('major_cm', '?')} cm  ·  minor={r.get('minor_cm', '?')} cm\n"
+
                         f"- **Geometry:** {r['geometry']}\n"
                         f"- **Density:** {r['density']:.3f} g/cm³  "
                         f"{density_icon} _{density_src}_\n"
@@ -515,7 +516,7 @@ if __name__ == "__main__":
     demo.queue()
     demo.launch(
         server_name="0.0.0.0",
-        server_port=7868,
+        server_port=7867,
         share=True,
     )
-# 7680
+#7680
